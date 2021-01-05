@@ -36,3 +36,11 @@ void write_short_int_to_txt(short int element) {
         exit(2);
     }
 }
+
+/*
+Those functions will create short-int.txt and short-int.bin files.
+By running an `ls -l` command on the current directory you'll se that
+the binary file weighs 2 bytes while the text file weighs 5 bytes.
+The txt file stores each digit of the number as a character.
+The bin file stores the entire number as a single entity. 
+*/

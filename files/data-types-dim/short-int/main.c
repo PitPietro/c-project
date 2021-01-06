@@ -11,3 +11,4 @@ int main() {
 }
 
 // cd files/data-types-dim/short-int
+// gcc -o main main.c short-int.c && ./main

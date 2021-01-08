@@ -14,8 +14,21 @@ void lowercase_alphabet() {
     
 }
 
+void uppercase_alphabet() {
+    int intA = (int)'A';
+    int intZ = (int)'Z';
+
+    char letter = (char)intA;
+
+    while((int)letter <= intZ) {
+        printf("%c -- %d\n", letter, (int)letter);
+        letter++;
+    }
+}
+
 int main() {
     lowercase_alphabet();
+    uppercase_alphabet();
     return 0;
 }
 

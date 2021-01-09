@@ -1,0 +1,1 @@
+int globalA = 120;

@@ -1,7 +1,7 @@
 # Scope and Lifetime of a variabile
 
-The scope is affected by the placement of the declaration.
 The lifetime is affected by the placement of the definition.
+The scope is affected by the placement of the declaration.
 
 ## 1. Lifetime
 
@@ -93,3 +93,106 @@ The `realloc  `function takes an allocated memory block and expands (or contract
 
 The contents of the memory return from `malloc ` are indeterminate. For `calloc  `the memory is initialised to all zeros. If `realloc ` expands the allocated memory area, then the contents of the extra expended area are indeterminate.
 The size and location of the heap are usually defined in the LCF.
+
+## 2. Scope
+
+The scope of an object is the part of the program where the variable can be accessed. It can be:
+
+1. File scope
+2. Block scope
+
+A variable must be declared before it is accessed, hence its scope is determined by the placement of its declaration.
+
+### 2.1. File Scope
+
+Any variable declared with file scope can be accessed by any function defined after the declaration.
+
+### 2.2. Block Scope
+
+Block scope is defined by the pairing of the curly braces `{` and `}` .
+A variable declared within a block can only be accessed within that block.
+Note that a local static variable has block scope even though it has static lifetime.
+
+Inside a function, further localised (inner) scopes can be introduced, e.g. (a loop inside a function).
+
+```c
+void f() {
+    int i;
+    int a = 15;
+    
+    for(i = 0; i < a; i++) {
+        int k = i + a;
+    }
+    
+    // this is NOT allowed
+    printf("k = %d", k);
+}
+```
+
+The variables `i` and `a` can be accessed within the *for* loop, but the variable `k` cannot be accessed outside the *for* loop.
+
+#### 2.2.1. Overlapping Scopes
+
+```c
+int a = 150;
+
+int main() {
+    int a = 30;
+    printf("Inside main, a = %d\n", a);
+    
+    return 0;
+}
+```
+
+The output will be:
+
+```bash
+Inside main, a = 30
+```
+
+An inner scope identifier always hides an outer scope identifier. The block-scoped identifier `a` hides the file-scoped identifier `a` .
+The file-scoped ` k` is still in scope but is rendered invisible, so it's a very bad practice to overlap scopes.
+
+### 2.3. Scope of Dynamic Objects
+
+A dynamic object doesn’t actually have scope. Its scope is determinated by the scope of any pointer holding the address of the dynamically allocated memory. As long as the pointer is in scope, it can be dereferenced and the memory accessed.
+
+### 2.4. External and Internal Linkage
+
+If a variable is defined with file scope in one file, but is required in another, then it can be brought into scope using the `extern` storage-class specifier.
+
+```c
+// fun.c
+int a = 120;
+```
+
+```c
+// main.c
+external int a;
+
+int main() {
+    // ...
+}
+```
+
+Off course, you need to compile both the files:
+
+```bash
+gcc -o main main.c fun.c
+```
+
+If you need a variable that has static lifetime and file scope, you can use the `static` keyword to affect scope rather than lifetime. If a file scoped variable is tagged as static then it has an *internal linkage*.
+
+```c
+// hello.c
+int a = 120; // external linkage – global scope
+static int b; // internal linkage – this-file scope
+```
+
+If another file tried to declare `b` as `extern`, then it would result in a **link-time error**. Note that internal linkage can also be applied to functions. All functions have external linkage by default, so it is very good practice to declare a function as static if it is only being used with the current file.
+
+## 3. Links
+
+I took inspiration from:
+
+- [blog.feabhas.com](https://blog.feabhas.com/2010/09/scope-and-lifetime-of-variables-in-c/)

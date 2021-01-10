@@ -2,7 +2,7 @@
 
 const short int charBit = 8;
 
-unsigned char maxChar() {
+unsigned char maxUnsignedChar() {
     // returns 2^8 - 1
     short int i;
     unsigned char result = 1;
@@ -13,25 +13,21 @@ unsigned char maxChar() {
     return result - 1;
 }
 
-int main() {
-    unsigned char a, b, c, d;
+void unsigndCharOverflow() {
+    unsigned char a, b;
 
-    a = maxChar();
+    a = maxUnsignedChar();
     b = a + 1;
 
-    c = 0;
-    d = c - 1;
-
+    printf("Unsigned char overflow:\n");
     // overlow: 255 + 1 = 0
     printf("a = %d\n", a);
     printf("%d + 1 = %d\n", a, b);
 
+    a = 0;
+    b = a - 1;
+
     // overlow: 0 - 1 = 255
-    printf("\nc = %d\n", c);
-    printf("%d - 1 = %d\n", c, d);
-
-    return 0;
+    printf("\na = %d\n", a);
+    printf("%d - 1 = %d\n", a, b);
 }
-
-// cd expressions
-// gcc -o overflow overflow.c && ./overflow

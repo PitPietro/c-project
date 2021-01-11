@@ -125,3 +125,63 @@ It will give as result:
 a = -128
 -128 - 1 = 127
 ```
+
+### 2.3 Represent characters using char
+Characters are represented with a single byte.
+A char can be interpreted as:
+1. integer (from -128 to 127 or from 0 to 255) using the `%d` placeholder
+2. character (ASCII code) using the `%c` placeholder
+
+```c
+#include <stdio.h>
+
+int main() {
+    char c = 64;
+
+    printf("%c - %d\n", c, c);    
+}
+```
+
+It will give as result:
+```bash
+@ - 64
+```
+
+In ASCII, from 0 to 32 there are the so called "transparent codes", they do not show a character but perform some other operations.
+i.e. code 10 is new line (`\n`), 32 is the space (` `)
+
+The characters are represented between single quotes: `' ... '`.
+Some special characters can not be represented between them and need a back-slash after the first single quote:
+- `'\n'` ~ new line
+- `'\t'` ~ tab
+- `'\''` ~ single quote
+- `'\"'` ~ double quote
+- `'\\'` ~ back-slash
+
+## 3. Real Numbers
+They are called *floating point numbers* becase the floating point (comma, decimal point) position depends on the expontent.
+
+### 2.1. Represent a real number
+It is represented using the scientific representation: `m * 10^(exp)` (using base 10).
+Where **m** is the "mantissa" and **exp** is the expontent of 10.
+
+The number of digits reserved for:
+- the mantissa define the number precision.
+- the expontent define the maximum representable number.
+
+Some examples of floating points are:
+```bash
+6.8900000 * 10^4 = 68900.00
+12.300 * 10^2 = 1230.0
+```
+
+The floating point numbers are:
+- `float` ~ 32 bit ~ %f
+- `double` ~ 64 bit ~ %lf
+- `long double` ~ 80 bit ~ %lf
+
+They can have different syntaxes:
+- 45.2
+- 65E3 = 65 * 10^3
+- 5.7E4 = 5.7 * 10^4
+- 809.7E-2 = 809.7 * 10^(-2)

@@ -19,7 +19,7 @@ For `unsigned char`, the maximum number of configurations is `2^8` and the maxim
 
 `unsigned int` is the data type that is more efficient on the CPU.
 
-### 1.2. Overflow
+### 1.2. Overflow of natural number
 If you try to represent the number `(2^n)` (or greater), you'll be send back to the first configuration: as many zeros as `n`.
 If you try to represent the number `(2^n) - (2^n) - 1 = 0 - 1` (or smaller), you'll be send back to the last configuration: `(2^n) -1`.
 
@@ -84,3 +84,44 @@ The signed integers are:
 - `int` ~ / ~ 16 or 32 bit
 - `long (int)` ~ -2147483648 .. 2147483647 ~ 32 bit
 - `long long (int)` ~ -9223372036854775808 .. 9223372036854775807 ~ 64 bit
+
+### 2.2. Overflow of relative number
+If you try to represent the number `2^(n-1)` (or greater), you'll be send back to the first configuration: `-2^(n-1)`
+If you try to represent the number `-2^(n-1) - 1` (or smaller), you'll be send back to the last configuration: `2^(n-1) - 1`.
+
+Let's make a couple of examples with `char` data type:
+```c
+int main() {
+    char a, b;
+
+    a = 127;
+    b = a + 1;
+
+    printf("a = %d\n", a);
+    printf("%d+1 = %d\n", a, b);
+}
+```
+
+It will give as result:
+```bash
+a = 127
+127 + 1 = -128
+```
+
+```c
+int main() {
+    char a, b;
+
+    a = -128;
+    b = a - 1;
+
+    printf("a = %d\n", a);
+    printf("%d+1 = %d\n", a, b);
+}
+```
+
+It will give as result:
+```bash
+a = -128
+-128 - 1 = 127
+```

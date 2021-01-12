@@ -185,3 +185,60 @@ They can have different syntaxes:
 - 65E3 = 65 * 10^3
 - 5.7E4 = 5.7 * 10^4
 - 809.7E-2 = 809.7 * 10^(-2)
+
+## 4. Homogeneous & Heterogeneous Expression
+An expression can be:
+- homogeneous: all the operands have the same type (i.e. `10 + 5`, `14.9 / 6.7`)
+- heterogeneous: the operands have different types (i.e. `2 + 3.8`, `18.6/3`, ...)
+### 4.1. Overloading of Operators
+Primitive operations associated with different types are denoted with the same symbol: i.e. to sum a coumple of numbers you'll always use the symbol `+`, wheather they're int, float or of any other type.
+
+How does the compiler knows which algorithm to use? (sum between int, sum between float, ...).
+
+C programming language establish which algorithm to use based on the type of the operands.
+The operators (`+`, `-`, `*`, `/`, ...) have multiple meaning and that's why this section is about **overloading of operators**.
+
+### 4.2. Types Conversion
+In C language, are executable the expressions (even the heterogeneous ones) in which all referenced types are compatible. Types are compatible if after the application of automatic implicit conversion rule, the expression between the types is homogeneous.
+
+### 4.3. Implicit Conversion Rule
+Each operand of type `char` or `short` is converted to `int` type.
+If the expression is still heterogeneous, the further conversions follows this hierarchy:
+```c
+int < long < float < double < long double
+```
+
+Each conversion from a lower type to an higher type is called **promotion**.
+After a promotion, the compiler checks if the expression is homogeneous and evaluate the result of the operation.
+
+Sometimes, the implicit conversion can lead to a loss of information if a variable have to move a step back in the hierarchy. It will trigger a **warning** but not an error.
+i.e. from `float` to `int`, the decial part of the numer will be lost and `double` to `float` can lead to a loss of information too, since the `double` variable can store a bigger decimal part than `float`.
+
+**Please Note**:
+Even `int` to `float` can lead to a loss of information if the bits reserved for the mantissa of the float are less than the ones reserved for the integer number.
+In this case, the less significant bits are lost.
+### 4.4. Conversion During Assignments
+During an assignment, the variable and the expression must have the same type.
+In case they:
+- are not compatible (e.i. an integer plus an array of char) you'll have compile-time error
+- are compatible (e.i. float and double) the compiler tries to make the implicit conversions
+
+```c
+int main() {
+    char c = 110;
+    short s;
+    float f;
+
+    // c: char --> short
+    s = c + 10;
+
+    // c: char --> short --> --> int --> float
+    f = c;
+
+    f = 15.8;
+
+    // Warning! truncation: 0.8 will be lost --> s = 15
+    s = f;
+}
+
+```

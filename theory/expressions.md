@@ -306,3 +306,27 @@ It will give as result:
 ```
 
 Another meaningfull example is the arithmetic mean as you can see in `expressions/cast-operator/arithmetic-mean.c`.
+
+### 4.6. Priority of Operators
+To avoid confusion during operations, has been made a list of priority.
+The **priority** specifies the order of evaluation of operators in case they're different from eachother.
+The **associativity** specifies the order of evaluation of operators in case they have equal priority. An operator can be associative to the left (almost all) or to the right. (ie. the sum is associative to the left: `15 - 3 + 4 = (15 - 3) + 4`).
+
+Of course, priority and associativity can be changed using round brackets.
+
+Even the assignment (`a = b`) is an operation and consequently provide a result, which is the value of the expression on the right of the equal sign. It is associative to the right.
+It's possible to make **multiple assignments** on the same row of code:
+```c
+int a, b;
+
+a = b = 15;
+printf("%d = %d", a, b);
+```
+
+It will give as result:
+```bash
+15 = 15
+```
+
+### 4.7 Concatenated Expression
+The concatenation operator is the **comma**. All the expressions are evalated from left to right.

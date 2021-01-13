@@ -242,3 +242,67 @@ int main() {
 }
 
 ```
+
+### 4.5. Casting
+In any expression is possible to force a conversion using the **cast** operator: it is used to avoid the warning.
+
+It uses this syntax:
+```bash
+( <type_to_cast_to> ) <expression>
+```
+
+It could be usefull in many situation.
+If, for example, you want to evaluate `2^n` with `n > 15` and save the value to a variable of type *long*:
+
+```c
+int main() {
+    int i;
+    long L;
+    
+    // 2^15
+    i = 32768;
+    // 2^16
+    L = i * 2;
+    printf("2^15 = %d\t2^16 = %ld\n", i, L);
+
+    // 2^16
+    i = L;
+    // 2^17
+    L = i * 2;
+    printf("2^16 = %d\t2^17 = %ld\n", i, L); 
+}
+
+// cd expressions/cast-operator
+```
+
+It will give as result:
+```bash
+2^15 = 32768    2^16 = 65536
+2^16 = 65536    2^17 = 0
+```
+
+The second time it tries to evaluate `L = i * i`, it triggers an overflow, since an integer variable can not handle such a large number. Using the cast operator it's possible to avoid it:
+
+```c
+int main() {
+    int i;
+    long L;
+    
+    // ...
+
+    // i = 2^16 = 65536
+    i = L;
+
+    // 2^17
+    L = ((long) i) * 2;
+    printf("2^16 = %d\t2^17 = %ld\n", i, L); 
+}
+```
+
+It will give as result:
+```bash
+2^15 = 32768    2^16 = 65536
+2^16 = 65536    2^17 = 131072
+```
+
+Another meaningfull example is the arithmetic mean as you can see in `expressions/cast-operator/arithmetic-mean.c`.

@@ -12,8 +12,8 @@ long factorial(int n) {
 }
 
 long iterative_factorial(int n) {
-    long result = 1;
     int i = 1;
+    long result = 1;
 
     while(i <= n) {
         result *= i;
@@ -23,14 +23,14 @@ long iterative_factorial(int n) {
     return result;
 }
 
-long tail_fact(int n, long result, int iterator) {
-    long res = result;
+long tail_fact(int n, int iterator, long result) {
     int i = iterator;
+    long res = result;
 
     while(i <= n) {
         res *= i;
         i++;
-        return tail_fact(n, res, i);
+        return tail_fact(n, i, res);
     }
 
     return res;

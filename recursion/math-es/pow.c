@@ -21,6 +21,18 @@ double iterative_pow(double b, int exp) {
     return res;
 }
 
+double iterative_pow_v2(double b, int exp) {
+    // no need for 'i' variable
+    double res = 1;
+
+    while(exp > 0) {
+        res *= b;
+        exp--;
+    }
+    
+    return res;
+}
+
 double tail_pow(double b, int exp, int iterator, double result) {
     int i = iterator;
     double res = result;
@@ -35,17 +47,31 @@ double tail_pow(double b, int exp, int iterator, double result) {
     return res;
 }
 
+double tail_pow_v2(double b, int exp, double result) {
+    double res = result;
+
+    if(exp > 0) {
+        return tail_pow_v2(b, exp - 1, res * b);
+    }
+
+    return res;
+}
+
 int main() {
     int base = 2;
     int exponent = 4;
 
     double recPow = recursive_pow(base, exponent);
     double iterPow = iterative_pow(base, exponent);
+    double iterPow2 = iterative_pow_v2(base, exponent);
     double tailPow = tail_pow(base, exponent, 1, 1);
+    double tailPow2 = tail_pow_v2(base, exponent, 1);
 
-    printf("%d^%d = %lf\n", base, exponent, recPow);
-    printf("%d^%d = %lf\n", base, exponent, iterPow);
-    printf("%d^%d = %lf\n", base, exponent, tailPow);
+    printf("%d^%d = %lf\t recursive\n", base, exponent, recPow);
+    printf("%d^%d = %lf\t iterative v1\n", base, exponent, iterPow);
+    printf("%d^%d = %lf\t iterative v2\n", base, exponent, iterPow2);
+    printf("%d^%d = %lf\t tail recursive v1\n", base, exponent, tailPow);
+    printf("%d^%d = %lf\t tail recursive v2\n", base, exponent, tailPow2);
 }
 
 // cd recursion/math-es

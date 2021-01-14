@@ -2,22 +2,35 @@
 #include <stdlib.h>
 
 long factorial(int n) {
-    // exit condition
     if(n == 0) {
+        // exit condition
         return 1;
     } else {
+        // recursion
         return n * factorial(n-1);
     }
 }
 
-
-long tail_fact(int n) {
-    long res = 1;
+long iterative_factorial(int n) {
+    long result = 1;
     int i = 1;
+
+    while(i <= n) {
+        result *= i;
+        i++;
+    }
+
+    return result;
+}
+
+long tail_fact(int n, long result, int iterator) {
+    long res = result;
+    int i = iterator;
 
     while(i <= n) {
         res *= i;
         i++;
+        return tail_fact(n, res, i);
     }
 
     return res;
@@ -30,9 +43,11 @@ int main() {
     scanf("%d", &a);
 
     long result = factorial(a);
-    long tailRes = tail_fact(a);
+    long iterRes = iterative_factorial(a);
+    long tailRes = tail_fact(a, 1, 1);
 
     printf("The factorial of %d is %ld\n", a, result);
+    printf("The factorial of %d is %ld\n", a, iterRes);
     printf("The factorial of %d is %ld\n", a, tailRes);
 
     return 0;

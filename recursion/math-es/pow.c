@@ -72,6 +72,8 @@ int main() {
     printf("%d^%d = %lf\t iterative v2\n", base, exponent, iterPow2);
     printf("%d^%d = %lf\t tail recursive v1\n", base, exponent, tailPow);
     printf("%d^%d = %lf\t tail recursive v2\n", base, exponent, tailPow2);
+    
+    return 0;
 }
 
 // cd recursion/math-es

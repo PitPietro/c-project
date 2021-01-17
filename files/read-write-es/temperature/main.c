@@ -7,7 +7,6 @@
 #define TIME 11
 #define MAX 15
 #define ADDR 50
-const char fileName[] = "TEMP.bin";
 
 // it contains the fields of a temperature record
 typedef struct {
@@ -16,14 +15,6 @@ typedef struct {
     char city[CITY];
     char time[TIME]; // format: dd/MM/yyyy (m = minute, M = month)
 } temperature;
-
-typedef struct {
-    char firstName[NAME];
-    char lastName[NAME];
-    int age;
-    // TODO: Add the department with an Enum
-    int salary;
-} person;
 
 void print_temps(temperature t[], int num) {
     int i;
@@ -56,12 +47,13 @@ void fake_insert(temperature t[]) {
     t = tmp;
 }
 
-void write_bin(temperature t[]) {
+void write_bin(temperature t[], char fileName[]) {
     int i;
     FILE *fp;
 
     // open file
     if((fp = fopen(fileName, "wb")) == NULL) {
+        printf("Error while opening the file\n");
         exit(1);
     }
 
@@ -72,31 +64,95 @@ void write_bin(temperature t[]) {
         exit(3);
     }
 
-    printf("%d records have been wrote to file.\n", i);
+    printf("%d records have been wrote to %s\n", i, fileName);
 
     // close file
     if(fclose(fp) != 0) {
+        printf("Error while closing the file\n");
         exit(2);
     }
 
 }
 
-int read_bin(temperature t[]) {
+void write_txt(temperature t[], char fileName[]) {
+    int i;
+    FILE *fp;
+
+    // open file
+    if((fp = fopen(fileName, "wt")) == NULL) {
+        printf("Error while opening the file\n");
+        exit(1);
+    }
+
+    for(i = 0; i < MAX; i++) {
+        fprintf(fp, "%lf ", t[i].value);
+        fprintf(fp, "%hn ", &t[i].day);
+        fprintf(fp, "%s ", t[i].city);
+        fprintf(fp, "%s\n", t[i].time);
+    }
+
+    // do not wrote all the records
+    if(i != MAX) {
+        exit(3);
+    }
+
+    printf("%d records have been wrote to %s\n", i, fileName);
+
+    // close file
+    if(fclose(fp) != 0) {
+        printf("Error while closing the file\n");
+        exit(2);
+    }
+
+}
+
+int read_bin(temperature t[], char fileName[]) {
     int i;
     FILE *fp;
 
     // open file
     if((fp = fopen(fileName, "rb")) == NULL) {
+        printf("Error while opening the file\n");
         exit(1);
     }
 
     // read the temperature records
     i = fread(t, sizeof(temperature), MAX, fp);
 
-    printf("%d records have been read from file.\n", i);
+    printf("%d records have been read from %s\n", i, fileName);
 
     // close file
     if(fclose(fp) != 0) {
+        printf("Error while closing the file\n");
+        exit(2);
+    }
+
+    return i;
+}
+
+int read_txt(temperature t[], char fileName[]) {
+    int i = 0;
+    FILE *fp;
+
+    // open file
+    if((fp = fopen(fileName, "rb")) == NULL) {
+        printf("Error while opening the file\n");
+        exit(1);
+    }
+
+    // read the temperature records
+    while(fscanf(fp, "%lf ", &t[i].value) != EOF) {
+        fscanf(fp, "%hn ", &t[i].day);
+        fscanf(fp, "%s ", t[i].city);
+        fscanf(fp, "%s\n", t[i].time);
+        i++;
+    }
+
+    printf("%d records have been read from %s\n", i, fileName);
+
+    // close file
+    if(fclose(fp) != 0) {
+        printf("Error while closing the file\n");
         exit(2);
     }
 
@@ -104,6 +160,9 @@ int read_bin(temperature t[]) {
 }
 
 int main() {
+    char bName[] = "TEMP.bin";
+    char tName[] = "TEMP.txt";
+    
     temperature myT[MAX] = {
         {15.321398, 2, "Sidney", "15/01/2010"},
         {45.82354897, 1, "NewYork", "02/10/2007"},
@@ -123,15 +182,26 @@ int main() {
     };
 
     print_temps(myT, MAX);
-    write_bin(myT);
+    write_bin(myT, bName);
 
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
     temperature readT[MAX];
     int num;
     
-    num = read_bin(readT);
+    num = read_bin(readT, bName);
     print_temps(readT, num);
+
+    printf("\n|~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+    print_temps(myT, MAX);
+    write_txt(myT, tName);
     
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+    temperature readTempTXT[MAX];
+    int numT;
+    
+    numT = read_txt(readTempTXT, tName);
+    print_temps(readTempTXT, numT);
+
     return 0;
 }
 

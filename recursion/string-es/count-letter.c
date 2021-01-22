@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 int iterative_count_letter(char word[], char letter) {
     int i = 0;

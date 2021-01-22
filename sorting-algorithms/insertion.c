@@ -2,6 +2,38 @@
 #include <stdlib.h>
 #include "sorting-utils.h"
 
+void insertion_sort_recursive(int numbers[], int size) { 
+
+    if (size <= 1) {
+        return;
+    }
+
+    // sort first n-1 elements 
+    insertion_sort_recursive(numbers, size - 1);
+
+    // insert last element at its correct position in sorted array. 
+    int last = numbers[size - 1];
+    int i = size - 2;
+
+    /* move elements of numbers[0..i-1], that are 
+      greater than key, to one position ahead 
+      of their current position
+    */
+    
+    while (i >= 0 && numbers[i] > last) { 
+        numbers[i+1] = numbers[i]; 
+        i--;
+
+        print_array(numbers, size);
+        printf("|  i = %d  |  size = %d  |  n[%d] = %d\n", i, size, i, numbers[i]);
+    }
+
+    numbers[i+1] = last;
+
+    print_array(numbers, size);
+    printf("|  i = %d  |  size = %d  |  n[%d] = %d\n", i, size, i, numbers[i]);
+}
+
 void insertion_sort(int numbers[], int size) {
     int i, j, key;
 
@@ -41,6 +73,23 @@ int main() {
     printf("Sorted array:\n");
     print_array(arr, n);
     printf("\n");
+
+    printf("\nInsertion sort recursive:\n");
+    int arr2[] = {89, 61, 33, 24, 15, 18, 11, 10}; 
+    int n2 = sizeof(arr2)/sizeof(arr2[0]);
+
+
+    printf("Unsorted array:\n");
+    print_array(arr2, n2);
+    printf("\n~~~~~\n");
+
+    insertion_sort_recursive(arr2, n2);
+
+    printf("~~~~~\n");
+    printf("Sorted array:\n");
+    print_array(arr2, n2);
+    printf("\n");
+
 
     return 0;
 }

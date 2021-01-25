@@ -40,6 +40,23 @@ void save_int_to_array(int n, int arr[]) {
     }
 }
 
+void is_palindrome(int number[], int k) {
+    int i = 0;
+
+    while(0 <= i && i <= k) {
+        printf("i: %d\tk: %d\tn[i] = %d = %d = n[k-1-i]\n", i, k, number[i], number[k-i]);
+        
+        if(number[i] != number[k - i]) {
+            printf("Not a palindrome!\n");
+            exit(1);
+        }
+
+        i++;
+    }
+
+    printf("The number is palindrome\n");
+}
+
 int main() {
     int number = 12321;
     int digits = count_digits(number);
@@ -47,6 +64,8 @@ int main() {
     
     save_int_to_array(number, array);
     print_array(array, digits);
+
+    is_palindrome(array, digits-1);
 }
 
 // cd recursion/math-es

@@ -16,7 +16,7 @@ long iterative_factorial(int n) {
     long result = 1;
 
     while(i <= n) {
-        result *= i;
+        result *= i; // result = result * i
         i++;
     }
 

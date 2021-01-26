@@ -40,7 +40,7 @@ int read_txt(temperature t[], char fileName[]) {
     FILE *fp;
 
     // open file
-    if((fp = fopen(fileName, "rb")) == NULL) {
+    if((fp = fopen(fileName, "rt")) == NULL) {
         printf("Error while opening the file\n");
         exit(1);
     }

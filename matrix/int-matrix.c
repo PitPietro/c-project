@@ -13,7 +13,6 @@ void print_matrix(int m[][COLUMN]) {
         }
         printf("\n");
     }
-
 }
 
 int main() {

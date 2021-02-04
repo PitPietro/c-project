@@ -39,7 +39,7 @@ int tail_sum_array(int numbers[], int iterator, int result) {
     int i = iterator;
     int res = result;
 
-    while(i < MAX) {
+    if(i < MAX) {
         res += numbers[i];
         i++;
 

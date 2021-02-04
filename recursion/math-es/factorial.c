@@ -27,7 +27,7 @@ long tail_fact(int n, int iterator, long result) {
     int i = iterator;
     long res = result;
 
-    while(i <= n) {
+    if(i <= n) {
         res *= i;
         i++;
         return tail_fact(n, i, res);

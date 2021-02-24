@@ -3,6 +3,9 @@
 */
 #include <stdio.h>
 #include <unistd.h>
+#include <time.h>
+#include <errno.h>
+
 #include "musical-frequencies.h"
 #include "musical-names.h"
 
@@ -41,55 +44,88 @@ float BPMToMillisec(int bpm) {
  * to stop count the melody dimension when there's a PAUSE (or more pauses)
  */
 int melodyDimension(float melody[2][MAX_NOTES]) {
-  // return the number of notes
-  // both the 1st and the 2nd arrays must have the same lenght
-
-  unsigned short int i, j;
-  unsigned short int dims[ROWS] = {0, 0};
-  
-  for(i = 0; i < ROWS; i++) {
-    j = 0;
-    while(melody[i][j] != END) {
-      j++;
-      dims[i]++;
-    }
+    unsigned short int i, j;
+    unsigned short int dims[ROWS] = {0, 0};
     
-    // for(j = 0; j < (sizeof(melody[i]) / sizeof(melody[i][0])); j++) {}
-  }
+    for(i = 0; i < ROWS; i++) {
+        j = 0;
+        while(melody[i][j] != END) {
+            j++;
+        dims[i]++;
+        }
+    
+        // for(j = 0; j < (sizeof(melody[i]) / sizeof(melody[i][0])); j++) {}
+    }
 
-  // notes must be as much as the durations
-  if(dims[0] != dims[1]) {
-    return -1;
-  } else {
-    return dims[0];
-  }
+    // notes must be as much as the durations
+    if(dims[0] != dims[1]) {
+        return -1;
+    } else {
+        return dims[0];
+    }
 }
 
+/*
+ * int nanosleep(const struct timespec *req, struct timespec *rem);
+ * 
+ * > DESCRIPTION
+ * nanosleep() suspends the execution of the calling thread until either
+ * at least the time specified in *req has elapsed, or the delivery of
+ * a signal that triggers the invocation of a handler in the calling
+ * thread or that terminates the process.
+ * 
+ * The structure timespec is used to specify intervals of time with nanosecond precision.
+ * It is defined as follows:
+ *
+ * struct timespec { time_t tv_sec; long tv_nsec; };
+ * 
+ * link: https://stackoverflow.com/questions/1157209/is-there-an-alternative-sleep-function-in-c-to-milliseconds#1157217
+*/
+int msleep(long msec) {
+    struct timespec ts;
+    int res;
+
+    if (msec < 0) {
+        errno = EINVAL;
+        return -1;
+    }
+
+    ts.tv_sec = msec / 1000;
+    ts.tv_nsec = (msec % 1000) * 1000000;
+
+    do {
+        res = nanosleep(&ts, &ts);
+    } while (res && errno == EINTR);
+
+    return res;
+}
+
+/*
+ * play the melody
+*/
 void playMelody(float melody[2][MAX_NOTES]) {
-  // melody contains the notes (in the 1st array) and the notes' duration (in the 2nd array)
-  // iterate over the notes of the melody
-
-  int dim = melodyDimension(melody);
-  int thisNote;
-  
-  for (thisNote = 0; thisNote < dim; thisNote++) {
-    float timeMillis = BPMToMillisec(DEFAULT_BPM);
-    float noteDuration = timeMillis * melody[1][thisNote];
-
-    printf("%d) %.02f Hz --> %.02f = %.02f * %.04f\n", thisNote, melody[0][thisNote], noteDuration, timeMillis, melody[1][thisNote]);
+    int dim = melodyDimension(melody);
+    int thisNote;
     
-    // use int usleep(useconds_t usec); but taking noteDuration * 1000
-    // since usleep takes in microseconds
+    for (thisNote = 0; thisNote < dim; thisNote++) {
+        float timeMillis = BPMToMillisec(DEFAULT_BPM);
+        float noteDuration = timeMillis * melody[1][thisNote];
 
-    usleep(noteDuration * 1000);
+        printf("%d) %.02f Hz --> %.02f = %.02f * %.04f\n", thisNote, melody[0][thisNote], noteDuration, timeMillis, melody[1][thisNote]);
+    
+    
+        // int nanosleep(const struct timespec *req, struct timespec *rem);
 
-    // tone(buzzer, melody[0][thisNote]);
-    // delay(noteDuration);
-    // stop the tone playing
-    // noTone(buzzer);
-  }
 
-  printf("_____\n\n");
+        msleep(noteDuration);
+
+        // tone(buzzer, melody[0][thisNote]);
+        // delay(noteDuration);
+        // stop the tone playing
+        // noTone(buzzer);
+    }
+
+    printf("_____\n\n");
 }
 
 int main() {

@@ -1,19 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-int f_const(int x) {
-    // f(x) = x
-    return x;
-}
-
-int f_pow(int x) {
-    // f(x) = x^2
-    return x * x;
-}
+#include "functions.h"
 
 // recursive_summ takes in a function as parameter
-int recursive_summ(int (*f)(int x), int m, int n) {
-    printf("m = %d ~ f(m) = %d\n", m, (*f)(m));
+int recursive_summ(double (*f)(double x), int m, int n) {
+    printf("m = %d ~ f(m) = %lf\n", m, (*f)(m));
 
     // everything starts from a for loop
     if(m == n) {
@@ -23,10 +14,10 @@ int recursive_summ(int (*f)(int x), int m, int n) {
     }
 }
 
-int iterative_summ_v0(int (*f)(int x), int m, int n) {
+double iterative_summ_v0(double (*f)(double x), int m, int n) {
     // everything starts from a for loop
     int i;
-    int result = 0;
+    double result = 0;
 
     for(i = m; i <= n; i++) {
         result += (*f)(i);
@@ -35,24 +26,24 @@ int iterative_summ_v0(int (*f)(int x), int m, int n) {
     return result;
 }
 
-int iterative_summ(int m, int n) {
+double iterative_summ(int m, int n) {
     // then it comes to a while loop
     // 'i' can be replaced by 'm' itself
-    int result = 0;
+    double result = 0;
 
     while(m <= n) {
-        result += f_pow(m);
+        result += f_square(m);
         m++;
     }
 
     return result;
 }
 
-int tail_summ(int m, int n, int res) {
-    int result = res;
+double tail_summ(int m, int n, double res) {
+    double result = res;
 
     if(m <= n) {
-        result += f_pow(m);
+        result += f_square(m);
         m++;
 
         return tail_summ(m, n, result);
@@ -65,22 +56,22 @@ int main() {
     int lower = 1;
     int upper = 4;
 
-    int recSumm = recursive_summ(f_const, lower, upper);
-    int interSummFor = iterative_summ_v0(f_const, lower, upper);
-    int interSumm = iterative_summ(lower, upper);
-    int tailSumm = tail_summ(lower, upper, 0);
+    double recSumm = recursive_summ(f_1, lower, upper);
+    double interSummFor = iterative_summ_v0(f_const, lower, upper);
+    double interSumm = iterative_summ(lower, upper);
+    double tailSumm = tail_summ(lower, upper, 0);
 
     char msg[] = "Summation of f(i) from i =";
-    printf("%s %d to %d is %d\n", msg, lower, upper, recSumm);
-    printf("%s %d to %d is %d\n", msg, lower, upper, interSummFor);
-    printf("%s %d to %d is %d\n", msg, lower, upper, interSumm);
-    printf("%s %d to %d is %d\n", msg, lower, upper, tailSumm);
+    printf("%s %d to %d is %lf\n", msg, lower, upper, recSumm);
+    printf("%s %d to %d is %lf\n", msg, lower, upper, interSummFor);
+    printf("%s %d to %d is %lf\n", msg, lower, upper, interSumm);
+    printf("%s %d to %d is %lf\n", msg, lower, upper, tailSumm);
 
     return 0;
 }
 
 // cd recursion/math-es
-// gcc -o summ summation.c && ./summ
+// gcc -o summ summation.c functions.c && ./summ
 
 /*
 Copy/Past the following line in any LaTeX editor:

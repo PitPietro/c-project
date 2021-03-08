@@ -1,37 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int f_const(int i) {
-    // f(i) = i
-    return i;
+int f_const(int x) {
+    // f(x) = x
+    return x;
 }
 
-int f_pow(int i) {
-    // f(i) = i^2
-    return i * i;
+int f_pow(int x) {
+    // f(x) = x^2
+    return x * x;
 }
 
-/*
-recursive_summ takes in a function as parameter
-*/
-int recursive_summ(int (*f)(int i), int m, int n) {
+// recursive_summ takes in a function as parameter
+int recursive_summ(int (*f)(int x), int m, int n) {
+    printf("m = %d ~ f(m) = %d\n", m, (*f)(m));
+
     // everything starts from a for loop
     if(m == n) {
-        printf("> exit: m = %d ~ m^2 = %d\n\n", m, f(m));
-        return f(m);
+        return (*f)(m);
     } else {
-        printf("> else: m = %d ~ m^2 = %d\n", m, f(m));
-        return f(m) + recursive_summ((*f), m+1, n);
+        return (*f)(m) + recursive_summ(f, m+1, n);
     }
 }
 
-int iterative_summ_v0(int m, int n) {
+int iterative_summ_v0(int (*f)(int x), int m, int n) {
     // everything starts from a for loop
     int i;
     int result = 0;
 
     for(i = m; i <= n; i++) {
-        result += f_pow(i);
+        result += (*f)(i);
     }
 
     return result;
@@ -68,7 +66,7 @@ int main() {
     int upper = 4;
 
     int recSumm = recursive_summ(f_const, lower, upper);
-    int interSummFor = iterative_summ_v0(lower, upper);
+    int interSummFor = iterative_summ_v0(f_const, lower, upper);
     int interSumm = iterative_summ(lower, upper);
     int tailSumm = tail_summ(lower, upper, 0);
 

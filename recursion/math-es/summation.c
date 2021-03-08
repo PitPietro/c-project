@@ -11,15 +11,17 @@ int f_pow(int i) {
     return i * i;
 }
 
-
-int recursive_summ(int m, int n) {
+/*
+recursive_summ takes in a function as parameter
+*/
+int recursive_summ(int (*f)(int i), int m, int n) {
     // everything starts from a for loop
     if(m == n) {
-        printf("> exit: m = %d ~ m^2 = %d\n\n", m, f_pow(m));
-        return f_pow(m);
+        printf("> exit: m = %d ~ m^2 = %d\n\n", m, f(m));
+        return f(m);
     } else {
-        printf("> else: m = %d ~ m^2 = %d\n", m, f_pow(m));
-        return f_pow(m) + recursive_summ(m+1, n);
+        printf("> else: m = %d ~ m^2 = %d\n", m, f(m));
+        return f(m) + recursive_summ((*f), m+1, n);
     }
 }
 
@@ -65,7 +67,7 @@ int main() {
     int lower = 1;
     int upper = 4;
 
-    int recSumm = recursive_summ(lower, upper);
+    int recSumm = recursive_summ(f_const, lower, upper);
     int interSummFor = iterative_summ_v0(lower, upper);
     int interSumm = iterative_summ(lower, upper);
     int tailSumm = tail_summ(lower, upper, 0);

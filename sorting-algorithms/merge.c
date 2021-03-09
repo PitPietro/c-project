@@ -67,6 +67,10 @@ void merge_sort(int numbers[], int left, int right) {
     }
 }
 
+void recursive_merge_sort_exposed_to_user(int numbers[], int dim) {
+    merge_sort(numbers, 0, dim - 1);
+}
+
 
 /* Function to merge the two haves numbers[l..m]
  and numbers[m+1..r] of array numbers[] */
@@ -124,6 +128,10 @@ void iterative_merge_sort(int numbers[], int left, int right) {
    }
 }
 
+void iterative_merge_sort_exposed_to_user(int numbers[], int dim) {
+    iterative_merge_sort(numbers, 0, dim - 1);
+}
+
 int main() {
     int arr[] = {89, 61, 33, 24, 15, 18, 11, 10}; 
     int n = sizeof(arr)/sizeof(arr[0]);
@@ -133,7 +141,7 @@ int main() {
     print_array(arr, n);
     printf("\n~~~~~\n");
 
-    merge_sort(arr, 0, n - 1);
+    recursive_merge_sort_exposed_to_user(arr, n);
 
     printf("~~~~~\n");
     printf("Sorted array:\n");
@@ -149,7 +157,7 @@ int main() {
     print_array(arr2, n2);
     printf("\n~~~~~\n");
 
-    iterative_merge_sort(arr2, 0, n2 - 1);
+    iterative_merge_sort_exposed_to_user(arr2, n2);
 
     printf("~~~~~\n");
     printf("Sorted array:\n");

@@ -2,7 +2,9 @@
 
 Every page explains a meaningful topic about the **C programming language**.
 
+## D
 
+### [Dynamic Variable](https://github.com/PitPietro/c-project/blob/main/docs/dynamic-variable.md)
 
 ## E
 

@@ -3,7 +3,11 @@
 ## Table of contents
 - [1. Introduction](#1-introduction)
   - [1.1. Concept of List](#11-concept-of-list)
-  - [1.2. Sequential & Linked List](#12-sequential-&-linked-list)
+  - [1.2. Sequential & Linked List](#12-sequential--linked-list)
+- [2. Operations over a List](#2-operations-over-a-list)
+  - [2.1. Create a simple list](#21-create-a-simple-list)
+  - [2.2. Search an element](#22-search-an-element)
+
 
 ## 1. Introduction
 
@@ -38,6 +42,18 @@ list root = NULL;
 ```
 
 ## 2. Operations over a List
+Take a look at the [`linked-list`](https://github.com/PitPietro/c-project/blob/main/linked-list/) folder.\
+
+The files common to all the operations are: 
+- [globals.h](https://github.com/PitPietro/c-project/blob/main/linked-list/globals.h)
+- [simple-main.c](https://github.com/PitPietro/c-project/blob/main/linked-list/simple-main.c)
 
 ### 2.1. Create a simple list
-Take a look at [create-simple-list.c](https://github.com/PitPietro/c-project/blob/main/linked-list/create-simple-list.c)
+The additional files are:
+- [simple-create.h](https://github.com/PitPietro/c-project/blob/main/linked-list/simple-create.h)
+- [simple-create.c](https://github.com/PitPietro/c-project/blob/main/linked-list/simple-create.c)
+
+### 2.2. Search an element
+Since there's no index to increment (you're not dealing with an array), you need a pointer with which you can sequentially scan the list:
+- [simple-search.h](https://github.com/PitPietro/c-project/blob/main/linked-list/simple-search.h)
+- [simple-search.c](https://github.com/PitPietro/c-project/blob/main/linked-list/simple-search.c)

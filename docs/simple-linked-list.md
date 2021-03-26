@@ -40,3 +40,4 @@ list root = NULL;
 ## 2. Operations over a List
 
 ### 2.1. Create a simple list
+Take a look at [create-simple-list.c](https://github.com/PitPietro/c-project/blob/main/linked-list/create-simple-list.c)

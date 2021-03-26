@@ -25,6 +25,8 @@ In the list implementation with pointers, each list node is a structure made up 
 2. successive node's position: a pointer (`NULL` if is the last element)
 
 ```c
+// linked-list/globals.h
+
 typedef struct linked_list {
     int value;
     struct linked_list *next;
@@ -36,3 +38,5 @@ list root = NULL;
 ```
 
 ## 2. Operations over a List
+
+### 2.1. Create a simple list

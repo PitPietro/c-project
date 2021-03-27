@@ -64,44 +64,14 @@ int main() {
     scanf("%d", &input);
 
     /* search */
+    searchMask(searchIterative, L1, input, "L1");
+    searchMask(searchRecursive, L1, input, "L1");
 
-    // TODO create a function that takes in a search function
-    if(searchIterative(L1, input)) {
-        printf("%d is inside the list L1.\n", input);
-    } else {
-        printf("%d is not inside the list L1.\n", input);
-    }
+    searchMask(searchIterative, L2, input, "L2");
+    searchMask(searchRecursive, L2, input, "L2");
 
-    if(searchRecursive(L1, input)) {
-        printf("%d is inside the list L1.\n", input);
-    } else {
-        printf("%d is not inside the list L1.\n", input);
-    }
-
-    if(searchIterative(L2, input)) {
-        printf("%d is inside the list L2.\n", input);
-    } else {
-        printf("%d is not inside the list L2.\n", input);
-    }
-
-    if(searchRecursive(L2, input)) {
-        printf("%d is inside the list L2.\n", input);
-    } else {
-        printf("%d is not inside the list L2.\n", input);
-    }
-
-    // since L3 is already ordered, the iterative search would be a waste of time
-    if(searchRecursive(L3, input)) {
-        printf("%d is inside the list L3.\n", input);
-    } else {
-        printf("%d is not inside the list L3.\n", input);
-    }
-
-    if(searchRecursive(L4, input)) {
-        printf("%d is inside the list L4.\n", input);
-    } else {
-        printf("%d is not inside the list L4.\n", input);
-    }
+    searchMask(searchIterative, L3, input, "L3");
+    searchMask(searchRecursive, L4, input, "L4");
 
     printf("\nThe list L1 length is %d (iterative)\n", lengthIterative(L1));
     printf("The list L1 length is %d (recursive)\n", lengthRecursive(L1));

@@ -16,6 +16,9 @@ int main() {
 
     // iteratively ordered list 
     simple_list L3 = NULL;
+
+    // recursively ordered list 
+    simple_list L4 = NULL;
     int input;
 
     printf("\tSimple Linked List\n\npress 0 to exit\n\n");
@@ -32,6 +35,7 @@ int main() {
         L1 = insertInTheHead(L1, input);
         L2 = insertInTheTail(L2, input);
         L3 = orderedInsertIterative(L3, input);
+        L4 = orderedInsertRecursive(L4, input);
     } while( input != 0);
 
     // print out the linked list
@@ -51,6 +55,9 @@ int main() {
 
     printf("\nShow the Iteratively Ordered List (recursive):\n");
     showListRecurvise(L3);
+
+    printf("\nShow the Recursively Ordered List (recursive):\n");
+    showListRecurvise(L4);
 
     // search element
     printf("\nElement to find: ");
@@ -90,12 +97,20 @@ int main() {
         printf("%d is not inside the list L3.\n", input);
     }
 
+    if(searchRecursive(L4, input)) {
+        printf("%d is inside the list L4.\n", input);
+    } else {
+        printf("%d is not inside the list L4.\n", input);
+    }
+
     printf("\nThe list L1 length is %d (iterative)\n", lengthIterative(L1));
     printf("The list L1 length is %d (recursive)\n", lengthRecursive(L1));
     printf("\nThe list L2 length is %d (iterative)\n", lengthIterative(L2));
     printf("The list L2 length is %d (recursive)\n", lengthRecursive(L2));
     printf("\nThe list L3 length is %d (iterative)\n", lengthIterative(L3));
     printf("The list L3 length is %d (recursive)\n", lengthRecursive(L3));
+    printf("\nThe list L4 length is %d (iterative)\n", lengthIterative(L4));
+    printf("The list L4 length is %d (recursive)\n", lengthRecursive(L4));
 
     return 0;
 }

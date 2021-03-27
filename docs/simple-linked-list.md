@@ -9,6 +9,7 @@
   - [2.2. Search an element](#22-search-an-element)
   - [2.3. Length of a list](#23-length-of-a-list)
 - [3. Ordered List](#3-ordered-list)
+  - [3.1. Iterative insertion](#31-iterative-insertion)
 
 
 ## 1. Introduction
@@ -71,6 +72,9 @@ The ordered insertion in the list can be:
   1. without duplication
   2. duplicating a part of the list
 
+The files are the same for both iterative and recursive ways:
+- [ordered-insert.h](https://github.com/PitPietro/c-project/blob/main/linked-list/ordered-insert.h)
+- [ordered-insert.c](https://github.com/PitPietro/c-project/blob/main/linked-list/ordered-insert.c)
 
 ### 3.1. Iterative insertion
 How the algorithm works:
@@ -78,3 +82,13 @@ How the algorithm works:
 - allocate a new node with the element to insert
 - connect the new node to the two adjacent ones
 
+### 3.2. Recursive insertion
+To insert an element, in an ordered way, in an ordered list:
+- if the list is empty
+  build a new list containing the new item
+- otherwise, if the element to be inserted is less than the head of the list
+  add the new item at the top of the given list,
+- otherwise
+  the element will be inserted later in the given list
+
+The first two cases are elementary operations while the third case can be treated iteratively or going back to the same problem recursively, but on a simpler case:  it will be possible make either an insertion in the head or go back to the empty list

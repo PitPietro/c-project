@@ -8,6 +8,7 @@
   - [2.1. Add an element on the head or in the tail of a simple list](#21-add-an-element-on-the-head-or-in-the-tail-of-a-simple-list)
   - [2.2. Search an element](#22-search-an-element)
   - [2.3. Length of a list](#23-length-of-a-list)
+- [3. Ordered List](#3-ordered-list)
 
 
 ## 1. Introduction
@@ -60,3 +61,20 @@ Since there's no index to increment (you're not dealing with an array), you need
 ### 2.3. Length of a list
 - [simple-length.h](https://github.com/PitPietro/c-project/blob/main/linked-list/simple-length.h)
 - [simple-length.c](https://github.com/PitPietro/c-project/blob/main/linked-list/simple-length.c)
+
+## 3. Ordered List
+An order relationship must be defined on the base-domain of the elements of the list.\
+The ordered insertion in the list can be:
+- Iterative:
+  scans the list with two auxiliary pointers, up to point where the element is to be inserted, and adds a node arranging the pointers
+- Recurisive:
+  1. without duplication
+  2. duplicating a part of the list
+
+
+### 3.1. Iterative insertion
+How the algorithm works:
+- scan the list until it reaches a node storing an element which is major than the one to insert
+- allocate a new node with the element to insert
+- connect the new node to the two adjacent ones
+

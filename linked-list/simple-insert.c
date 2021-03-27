@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #include "globals.h"
 
-void showList(simple_list myL) {
-    printf("\nShow List:\n");
-
+void showListIterative(simple_list myL) {
     while (myL != NULL) {
         printf("%d\n", myL->value);
         myL = myL->next;

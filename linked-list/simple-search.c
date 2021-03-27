@@ -17,7 +17,6 @@ int searchIterative(simple_list myL, int i) {
 }
 
 int searchRecursive(simple_list myL, int i) {
-
     if (myL != NULL) {
         if(myL->value == i) {
             return 1;

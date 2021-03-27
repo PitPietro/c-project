@@ -5,11 +5,17 @@
 #include "simple-insert.h"
 #include "simple-search.h"
 #include "simple-length.h"
+#include "ordered-insert.h"
 
 int main() {
     // 'simple_list' is a pointer to 'item' struct
-    simple_list root = NULL, L2 = NULL;    
-    simple_list L;
+    simple_list L1 = NULL;
+
+    // reversed list
+    simple_list L2 = NULL;
+
+    // iteratively ordered list 
+    simple_list L3 = NULL;
     int input;
 
     printf("\tSimple Linked List\n\npress 0 to exit\n\n");
@@ -22,49 +28,77 @@ int main() {
         /* adding the element to the list */
         // '->' access a struct's field referenced by a pointer
         
-        // let 'root' points to the last element of the linked list
-        root = insertInTheHead(root, input);
+        // let 'L1' points to the last element of the linked list
+        L1 = insertInTheHead(L1, input);
         L2 = insertInTheTail(L2, input);
+        L3 = orderedInsertIterative(L3, input);
     } while( input != 0);
 
     // print out the linked list
-    showList(root);
+    printf("\nShow List (iterative):\n");
+    showListIterative(L1);
 
+    /*
     printf("\nShow List Recursive:\n");
-    showListRecurvise(root);
+    showListRecurvise(L1);
 
     // print out the "reversed" linked list
     showList(L2);
+    */
 
-    printf("\nShow the Reversed List Recursive:\n");
+    printf("\nShow the Reversed List (recursive):\n");
     showListRecurvise(L2);
+
+    printf("\nShow the Iteratively Ordered List (recursive):\n");
+    showListRecurvise(L3);
 
     // search element
     printf("\nElement to find: ");
     scanf("%d", &input);
 
+    /* search */
+
     // TODO create a function that takes in a search function
-    if(searchIterative(root, input)) {
-        printf("%d is inside the list.\n", input);
+    if(searchIterative(L1, input)) {
+        printf("%d is inside the list L1.\n", input);
     } else {
-        printf("%d is not inside the list.\n", input);
+        printf("%d is not inside the list L1.\n", input);
     }
 
-    // search element - recursive
-    printf("\nElement to find: ");
-    scanf("%d", &input);
-
-    if(searchRecursive(root, input)) {
-        printf("%d is inside the list.\n", input);
+    if(searchRecursive(L1, input)) {
+        printf("%d is inside the list L1.\n", input);
     } else {
-        printf("%d is not inside the list.\n", input);
+        printf("%d is not inside the list L1.\n", input);
     }
 
-    printf("\nThe list length is %d (iterative)\n", lengthIterative(root));
-    printf("The list length is %d (recursive)\n", lengthRecursive(root));
+    if(searchIterative(L2, input)) {
+        printf("%d is inside the list L2.\n", input);
+    } else {
+        printf("%d is not inside the list L2.\n", input);
+    }
+
+    if(searchRecursive(L2, input)) {
+        printf("%d is inside the list L2.\n", input);
+    } else {
+        printf("%d is not inside the list L2.\n", input);
+    }
+
+    // since L3 is already ordered, the iterative search would be a waste of time
+    if(searchRecursive(L3, input)) {
+        printf("%d is inside the list L3.\n", input);
+    } else {
+        printf("%d is not inside the list L3.\n", input);
+    }
+
+    printf("\nThe list L1 length is %d (iterative)\n", lengthIterative(L1));
+    printf("The list L1 length is %d (recursive)\n", lengthRecursive(L1));
+    printf("\nThe list L2 length is %d (iterative)\n", lengthIterative(L2));
+    printf("The list L2 length is %d (recursive)\n", lengthRecursive(L2));
+    printf("\nThe list L3 length is %d (iterative)\n", lengthIterative(L3));
+    printf("The list L3 length is %d (recursive)\n", lengthRecursive(L3));
 
     return 0;
 }
 
 // cd linked-list
-// gcc -o main simple-main.c simple-insert.c simple-search.c simple-length.c && ./main
+// gcc -o main simple-main.c simple-insert.c simple-search.c simple-length.c ordered-insert.c && ./main

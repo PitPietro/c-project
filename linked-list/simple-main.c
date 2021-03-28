@@ -7,6 +7,7 @@
 #include "simple-length.h"
 #include "ordered-insert.h"
 #include "simple-summation.h"
+#include "simple-sublist.h"
 
 int main() {
     // 'simple_list' is a pointer to 'item' struct
@@ -91,10 +92,19 @@ int main() {
     printf("Sum of all elements of L3 is %d (recursive)\n", sumListRecursive(L3));
     printf("\nSum of all elements of L4 is %d (iterative)\n", sumListIterative(L4));
     printf("Sum of all elements of L4 is %d (recursive)\n", sumListRecursive(L4));
-    
+
+
+    // sub-list
+    printf("\nSublist ~ insert element to start from: ");
+    scanf("%d", &input);
+
+    simple_list kL1 = subListIterative(L2, input);
+
+    printf("The sublist L1 from %d to %d is:\n", input, lengthIterative(L1));
+    showListIterative(kL1);
 
     return 0;
 }
 
 // cd linked-list
-// gcc -o main simple-main.c simple-insert.c simple-search.c simple-length.c ordered-insert.c simple-summation.c && ./main
+// gcc -o main simple-main.c simple-insert.c simple-search.c simple-length.c ordered-insert.c simple-summation.c simple-sublist.c && ./main

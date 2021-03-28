@@ -6,6 +6,7 @@
 #include "simple-search.h"
 #include "simple-length.h"
 #include "ordered-insert.h"
+#include "simple-summation.h"
 
 int main() {
     // 'simple_list' is a pointer to 'item' struct
@@ -82,8 +83,18 @@ int main() {
     printf("\nThe list L4 length is %d (iterative)\n", lengthIterative(L4));
     printf("The list L4 length is %d (recursive)\n", lengthRecursive(L4));
 
+    printf("\nSum of all elements of L1 is %d (iterative)\n", sumListIterative(L1));
+    printf("Sum of all elements of L1 is %d (recursive)\n", sumListRecursive(L1));
+    printf("\nSum of all elements of L2 is %d (iterative)\n", sumListIterative(L2));
+    printf("Sum of all elements of L2 is %d (recursive)\n", sumListRecursive(L2));
+    printf("\nSum of all elements of L3 is %d (iterative)\n", sumListIterative(L3));
+    printf("Sum of all elements of L3 is %d (recursive)\n", sumListRecursive(L3));
+    printf("\nSum of all elements of L4 is %d (iterative)\n", sumListIterative(L4));
+    printf("Sum of all elements of L4 is %d (recursive)\n", sumListRecursive(L4));
+    
+
     return 0;
 }
 
 // cd linked-list
-// gcc -o main simple-main.c simple-insert.c simple-search.c simple-length.c ordered-insert.c && ./main
+// gcc -o main simple-main.c simple-insert.c simple-search.c simple-length.c ordered-insert.c simple-summation.c && ./main

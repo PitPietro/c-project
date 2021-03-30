@@ -15,4 +15,15 @@ git flow feature start adt-list
 #
 #      git flow feature finish adt-list
 
+git add .
+
+git commit -m "fixed something"
+
+git push --set-upstream origin feature/adt-list
+
+git add .
+
+git commit -m "fixed something else"
+
+git flow finish
 ```

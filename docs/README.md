@@ -2,6 +2,10 @@
 
 Every page explains a meaningful topic about the **C programming language**.
 
+## A
+
+### [ADT - Simple List](https://github.com/PitPietro/c-project/blob/main/docs/adt-simple-list.md)
+
 ## D
 
 ### [Dynamic Variable](https://github.com/PitPietro/c-project/blob/main/docs/dynamic-variable.md)

@@ -9,6 +9,7 @@
   - [2.1. ADT realization](#21-adt-realization)
   - [2.2. ADT operations](#22-adt-operations)
   - [2.3. Limits of ADT in C](#23-limits-of-adt-in-c)
+- [3. Examples](#3-examples)
 
 ## 1. Software Components
 The software components of an ADT are:
@@ -95,5 +96,5 @@ An ADT can define:
 ### 2.3. Limits of ADT in C
 There is no protection against an incorrect use of the ADT. Moreover, the internal structure of the object is visible by all the files. So, C proggramming language does not guarantee **information hiding**: an adequate level of protection. By including the header file (`#include "filename.h`), the client knows the structure of the defined type (`typedef` definition).
 
-## . Examples
+## 3. Examples
 The [adt](../data-types/adt/) folder contains examples about ADT implementation.

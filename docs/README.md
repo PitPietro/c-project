@@ -4,6 +4,7 @@ Every page explains a meaningful topic about the **C programming language**.
 
 ## A
 
+### [ADT](adt.md)
 ### [ADT - Simple List](adt-simple-list.md)
 
 ## D

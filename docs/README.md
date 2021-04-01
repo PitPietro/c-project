@@ -4,35 +4,44 @@ Every page explains a meaningful topic about the **C programming language**.
 
 TODO: fix the links: they're not in **main** branch.
 
+<hr />
+
 ## A
 
 ### [ADT - Simple List](adt-simple-list.md)
+
+<hr />
 
 ## D
 
 ### [Dynamic Variable](dynamic-variable.md)
 
+<hr />
+
 ## E
 
-### [Expressions](https://github.com/PitPietro/c-project/blob/main/docs/expressions.md)
+### [Expressions](expressions.md)
 
+<hr />
 
 ## L
 
-### [Left and Right Values](https://github.com/PitPietro/c-project/blob/main/docs/left-right-values.md)
+### [Left and Right Values](left-right-values.md)
 
-### [Lifetime & Scope](https://github.com/PitPietro/c-project/blob/main/docs/lifetime-scope.md)
+### [Lifetime & Scope](lifetime-scope.md)
 
-
+<hr />
 
 ## P
 
-### [Poiters](https://github.com/PitPietro/c-project/blob/main/docs/pointers.md)
+### [Poiters](pointers.md)
+
+<hr />
 
 ## R
 
-### [Recursion](https://github.com/PitPietro/c-project/blob/main/docs/recursion.md)
+### [Recursion](recursion.md)
 
 ## S
 
-### [Simple Linked List](https://github.com/PitPietro/c-project/blob/main/docs/simple-linked-list.md)
+### [Simple Linked List](simple-linked-list.md)

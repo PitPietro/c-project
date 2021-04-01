@@ -6,11 +6,11 @@ TODO: fix the links: they're not in **main** branch.
 
 ## A
 
-### [ADT - Simple List](https://github.com/PitPietro/c-project/blob/main/docs/adt-simple-list.md)
+### [ADT - Simple List](adt-simple-list.md)
 
 ## D
 
-### [Dynamic Variable](https://github.com/PitPietro/c-project/blob/main/docs/dynamic-variable.md)
+### [Dynamic Variable](dynamic-variable.md)
 
 ## E
 

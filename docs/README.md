@@ -2,37 +2,32 @@
 
 Every page explains a meaningful topic about the **C programming language**.
 
-TODO: fix the links: they're not in **main** branch.
-
 ## A
 
-### [ADT - Simple List](https://github.com/PitPietro/c-project/blob/main/docs/adt-simple-list.md)
+### [ADT - Simple List](adt-simple-list.md)
 
 ## D
 
-### [Dynamic Variable](https://github.com/PitPietro/c-project/blob/main/docs/dynamic-variable.md)
+### [Dynamic Variable](dynamic-variable.md)
 
 ## E
 
-### [Expressions](https://github.com/PitPietro/c-project/blob/main/docs/expressions.md)
-
+### [Expressions](expressions.md)
 
 ## L
 
-### [Left and Right Values](https://github.com/PitPietro/c-project/blob/main/docs/left-right-values.md)
+### [Left and Right Values](left-right-values.md)
 
-### [Lifetime & Scope](https://github.com/PitPietro/c-project/blob/main/docs/lifetime-scope.md)
-
-
+### [Lifetime & Scope](lifetime-scope.md)
 
 ## P
 
-### [Poiters](https://github.com/PitPietro/c-project/blob/main/docs/pointers.md)
+### [Poiters](pointers.md)
 
 ## R
 
-### [Recursion](https://github.com/PitPietro/c-project/blob/main/docs/recursion.md)
+### [Recursion](recursion.md)
 
 ## S
 
-### [Simple Linked List](https://github.com/PitPietro/c-project/blob/main/docs/simple-linked-list.md)
+### [Simple Linked List](simple-linked-list.md)

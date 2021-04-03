@@ -10,6 +10,7 @@
   - [2.3. Length of a list](#23-length-of-a-list)
 - [3. Ordered List](#3-ordered-list)
   - [3.1. Iterative insertion](#31-iterative-insertion)
+- [4. List of Struct](#4-list-of-struct)
 
 
 ## 1. Introduction
@@ -92,3 +93,12 @@ To insert an element, in an ordered way, in an ordered list:
   the element will be inserted later in the given list
 
 The first two cases are elementary operations while the third case can be treated iteratively or going back to the same problem recursively, but on a simpler case:  it will be possible make either an insertion in the head or go back to the empty list
+
+## 4. List of Struct
+
+Pros:
+1. the list must not be statically defined, it's a dynamic data structure, it grows as long as there space in the heap
+2. change the type of the elements (value field), but the operations remain almost the same
+
+Cons:
+1. sequential search only

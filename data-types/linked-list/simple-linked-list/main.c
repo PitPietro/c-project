@@ -106,5 +106,5 @@ int main() {
     return 0;
 }
 
-// cd linked-list
-// gcc -o main simple-main.c simple-insert.c simple-search.c simple-length.c ordered-insert.c simple-summation.c simple-sublist.c && ./main
+// cd data-types/linked-list/simple-linked-list
+// gcc -o main main.c simple-insert.c simple-search.c simple-length.c ordered-insert.c simple-summation.c simple-sublist.c && ./main

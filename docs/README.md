@@ -21,6 +21,8 @@ Every page explains a meaningful topic about the **C programming language**.
 
 ### [Lifetime & Scope](lifetime-scope.md)
 
+### [List of Struct](list-of-struct.md)
+
 ## P
 
 ### [Poiters](pointers.md)

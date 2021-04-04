@@ -46,7 +46,7 @@ Each new *feature* should reside in its own branch, which can be pushed to the c
 
 Feature branches combined with the `develop` branch is known as the **Feature Branch Workflow**.
 
-#### 2.1. Creating a feature branch
+#### 2.1. Create a feature branch
 Off course, you need to replace `[feature-branch-name]` with a valid branch name (i.e. `adt-integration`, `gui`, `contacts`, ...).
 
 ```bash
@@ -70,29 +70,36 @@ git flow feature start adt-list
 #      git flow feature finish adt-list
 ```
 
+#### 2.2. Finish a feature branch
+Merge the `[feature-branch-name]` branch into `develop`.
+
 ```bash
-
-git flow feature start adt-list
-# Switched to a new branch 'feature/adt-list'
-#
-# Summary of actions:
-# - A new branch 'feature/adt-list' was created, based on 'develop'
-# - You are now on branch 'feature/adt-list'
-#
-# Now, start committing on your feature. When done, use:
-#
-#      git flow feature finish adt-list
-
 git add .
 
 git commit -m "fixed something"
 
+# at the first push, you need to set the remote branch
+git push --set-upstream origin [feature-branch-name]
+
+# e. i. push a feature called 'adt-list'
 git push --set-upstream origin feature/adt-list
 
+# make all the commits you need to complete the development of the branch
 git add .
-
 git commit -m "fixed something else"
-# git add & commit all you need
+git push
+# ...
+
+# complete the feature and merge into develop
+
+# without git-flow
+git checkout develop
+git merge [feature-branch-name]
+
+# with git-flow
+git flow feature finish [feature-branch-name]
+
+# e. i. finish a feature called 'adt-list'
 
 git flow feature finish adt-list
 # Switched to branch 'develop'

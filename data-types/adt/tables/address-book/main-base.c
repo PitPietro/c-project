@@ -51,5 +51,5 @@ int main() {
     return 0;
 }
 
-// cd data-types/tables/address-book
+// cd data-types/adt/tables/address-book
 // gcc -o main main-base.c base-functions.c && ./main

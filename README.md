@@ -6,7 +6,7 @@
 
 #### 1.1. Develop and Main Branches
 
-Instead of a single `main` branch (which used to be called `master` branch), **git-flow** uses a couple of branches to versionate a project:
+Instead of a single `main` branch (which used to be called ``main`` branch), **git-flow** uses a couple of branches to versionate a project:
 1. `main` branch: stores the official release history
 2. `develop` branch: serves as an integration branch for features (it's also useful to tag all commits in the `main` branch with a version number).
 
@@ -22,7 +22,7 @@ When using the git-flow extension library, executing `git flow init` on an exist
 git flow init
 # Initialized empty Git repository in ~/project/.git/
 # No branches exist yet. Base branches must be created now.
-# Branch name for production releases: [master]
+# Branch name for production releases: [`master`]
 # Branch name for "next release" development: [develop]
 #
 #
@@ -36,18 +36,18 @@ git flow init
 
 # git branch
 # * develop
-#  master
+#  main
 ```
 
 ### 2. Feature Branches
-Each new *feature* should reside in its own branch, which can be pushed to the central repository. But, instead of branching off of master, feature branches use `develop` as their parent branch. When a feature is complete, it gets merged back into `develop`.
+Each new *feature* should reside in its own branch, which can be pushed to the central repository. But, instead of branching off of `main`, feature branches use `develop` as their parent branch. When a feature is complete, it gets merged back into `develop`.
 
-**Plase Note**: Features should never interact directly with master.
+**Plase Note**: Features should never interact directly with `main`.
 
 Feature branches combined with the `develop` branch is known as the **Feature Branch Workflow**.
 
 #### 2.1. Create a feature branch
-Off course, you need to replace `[feature-branch-name]` with a valid branch name (i.e. `adt-integration`, `gui`, `contacts`, ...).
+In the snippet below, off course, you need to replace `[feature-branch-name]` with a valid branch name (i.e. `adt-integration`, `gui`, `contacts`, ...).
 
 ```bash
 # without git-flow
@@ -75,11 +75,10 @@ Merge the `[feature-branch-name]` branch into `develop`.
 
 ```bash
 git add .
-
 git commit -m "fixed something"
 
 # at the first push, you need to set the remote branch
-git push --set-upstream origin [feature-branch-name]
+git push --set-upstream origin feature/[feature-branch-name]
 
 # e. i. push a feature called 'adt-list'
 git push --set-upstream origin feature/adt-list
@@ -100,7 +99,6 @@ git merge [feature-branch-name]
 git flow feature finish [feature-branch-name]
 
 # e. i. finish a feature called 'adt-list'
-
 git flow feature finish adt-list
 # Switched to branch 'develop'
 # Merge made by the 'recursive' strategy.
@@ -114,6 +112,7 @@ git flow feature finish adt-list
 # - Feature branch 'feature/adt-list' has been locally deleted; it has been remotely deleted from 'origin'
 # - You are now on branch 'develop'
 
+# push the updated develop branch
 git push -u origin develop
 # Enumerating objects: 19, done.
 # Counting objects: 100% (19/19), done.
@@ -131,3 +130,8 @@ git push -u origin develop
 # Branch 'develop' set up to track remote branch 'develop' from 'origin'.
 
 ```
+
+### 3. Release Branches
+
+## Reference
+- [git-flow Workflow by Atlassian](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)

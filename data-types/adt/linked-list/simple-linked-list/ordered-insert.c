@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "globals.h"
-#include "simple-insert.h"
+#include "insert.h"
 
 simple_list orderedInsertIterative(simple_list myL, int i) {
     simple_list pprec, patt = myL, aux;

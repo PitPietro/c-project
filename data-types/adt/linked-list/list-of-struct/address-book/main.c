@@ -53,5 +53,5 @@ void menu(void) {
     printf("  0) ~~ Exit\n");
 }
 
-// cd data-types/linked-list/list-of-struct/address-book/
+// cd data-types/adt/linked-list/list-of-struct/address-book/
 // gcc -o main main.c list.c && ./main

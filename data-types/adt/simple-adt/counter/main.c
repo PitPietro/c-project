@@ -54,5 +54,5 @@ void printMenu() {
     printf("\n\nMenu\n\t0) EXIT\n\t1) Reset\n\t2) Increment\n\t3) Decrement\n\t4) Get status\n");
 }
 
-// cd data-types/adt/counter-folder
+// cd data-types/adt/simple-adt/counter
 // gcc -o main main.c counter.c && ./main

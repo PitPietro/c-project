@@ -2,12 +2,12 @@
 #include <stdlib.h>
 
 #include "globals.h"
-#include "simple-insert.h"
-#include "simple-search.h"
-#include "simple-length.h"
+#include "insert.h"
+#include "search.h"
+#include "length.h"
 #include "ordered-insert.h"
-#include "simple-summation.h"
-#include "simple-sublist.h"
+#include "summation.h"
+#include "sublist.h"
 
 int main() {
     // 'simple_list' is a pointer to 'item' struct
@@ -106,5 +106,5 @@ int main() {
     return 0;
 }
 
-// cd data-types/linked-list/simple-linked-list
-// gcc -o main main.c simple-insert.c simple-search.c simple-length.c ordered-insert.c simple-summation.c simple-sublist.c && ./main
+// cd data-types/adt/linked-list/simple-linked-list
+// gcc -o main main.c insert.c search.c length.c ordered-insert.c summation.c sublist.c && ./main

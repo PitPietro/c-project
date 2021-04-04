@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "globals.h"
-#include "simple-insert.h"
+#include "insert.h"
 
 simple_list subListIterative(simple_list myL, int k) {
     simple_list tmpList = NULL;

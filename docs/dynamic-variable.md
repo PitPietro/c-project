@@ -16,16 +16,37 @@
 ## 1. Types of variables in C
 
 ### 1.1. Global variables
+The **global** variables have the same *lifetime* of the entire program. Even the **static** variables have the same *lifetime* of the entire program, but thier *scope* is inside the function where they're defined.
 
 ### 1.2. Automatic variables
+The automatic variables are:
+- local variables
+- formal parameters
+
+They're *allocated* and *deallocated* automatically.
 
 ### 1.3. Dynamic variables
+Data structure like lists or trees are dynamic.
+
+Inside `<stdlib.h>` are defined the functions for:
+- allocation: `malloc()`
+- deallocation: `free()`
+
+The can be refered only by using pointers.
+Their *lifetime* is decided by the programmer who write the program.
 
 ## 2. Memory Allocation
 
 ```c
 void * malloc(size_t dim)
 ```
+
+The word `malloc` stands for MemoryALLOCation.
+
+It asks the OS to allocate a memory area of `dim` bytes (from `HEAP`) and returns the address of the allocated memory or `NULL` in case of error.
+**Please Note**: Be sure to always check for `malloc` not to return `NULL` during the program execution.
+
+Since `malloc` returns a `void` pointer, you'll have to make an explicit cast to perform the assignment.
 
 ## 3. Memory Deallocation
 

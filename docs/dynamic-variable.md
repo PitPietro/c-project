@@ -54,7 +54,25 @@ Since `malloc` returns a `void` pointer, you'll have to make an explicit cast to
 void free(void * p)
 ```
 
+The allocated memory must be explicitly deallocated with the `free` function, which takes in only the pointer.
+
+```c
+int n = 5;
+int *p = (int *) malloc(n + sizeof(int));
+
+// make stuff with the variable p
+
+free(p);
+```
+
+It's not necessary to tell the dimension of the variable to deallocate: the OS already knows it thanks to the prevous `malloc` call.
+
+If the memory is not correctly deallocated, you'll gen a **memory leaking** error.
+
+In the case of *shared data structures*, it is necessary to know who is using a certain structure, in order to deallocate it only when there are no more references to it.
+
 ### 3.1. Dangling Reference
+It occurs when, at some point of the program exection, there are pointers which points to a memory area that has been deallocated.
 
 ### 3.2 Unused Areas
 

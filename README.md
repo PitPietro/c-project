@@ -98,7 +98,7 @@ git merge [feature-branch-name]
 # with git-flow
 git flow feature finish [feature-branch-name]
 
-# e. i. finish a feature called 'adt-list'
+# e.i. finish a feature called 'adt-list'
 git flow feature finish adt-list
 # Switched to branch 'develop'
 # Merge made by the 'recursive' strategy.
@@ -132,6 +132,39 @@ git push -u origin develop
 ```
 
 ### 3. Release Branches
+Once `develop` has enough features for a release, you need to fork a `release` branch off `develop`. By creating this branch, you starts the next *release cycle*: so no new features can be added after this point (only bug fixes, documentation generation, and other release-oriented tasks should go in this branch). Once it's ready to ship, `release` branch gets merged into `main` and tagged with a version number. In addition, it should be merged back into `develop`, which may have progressed since the release was initiated.
+
+Using a dedicated branch to prepare releases makes it possible for one team to publish the current release while another team continues working on features for the next release. It also creates well-defined phases of development.
+
+Just like `feature` branches, `release` branches are based on `develop` branch too:
+
+```bash
+# start a release branch
+
+# without git-flow
+git checkout develop
+git checkout -b release/[version-number]
+# git checkout -b release/0.1.0
+
+# with git-flow
+git flow release start [version-number]
+# git flow release start 0.1.0
+```
+
+Once the release is ready to ship, you'll merge it into `main` and `develop`, then the `release` branch will be deleted. It's important to merge back into `develop` because updates may have been added to the `release` branch and they need to be accessible to new features.
+
+```bash
+# finish a release branch
+
+# without git-flow
+git checkout main
+git merge release/[version-number]
+# git merge release/0.1.0
+
+# with git-flow
+git flow release finish '[version-number]'
+# git flow release finish '0.1.0'
+```
 
 ## Reference
 - [git-flow Workflow by Atlassian](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)

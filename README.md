@@ -132,7 +132,8 @@ git push -u origin develop
 ```
 
 ### 3. Release Branches
-Once `develop` has enough features for a release, you need to fork a `release` branch off `develop`. By creating this branch, you starts the next *release cycle*: so no new features can be added after this point (only bug fixes, documentation generation, and other release-oriented tasks should go in this branch). Once it's ready to ship, `release` branch gets merged into `main` and tagged with a version number. In addition, it should be merged back into `develop`, which may have progressed since the release was initiated.
+Once `develop` has enough features for a release, you need to fork a `release` branch off of `develop`. By creating this branch, you starts the next *release cycle*: so no new features can be added after this point (only bug fixes, documentation generation, and other release-oriented tasks should go in this branch).
+Once it's ready to ship, `release` branch gets merged into `main` and tagged with a version number. In addition, it should be merged back into `develop`, which may have progressed since the release was initiated.
 
 Using a dedicated branch to prepare releases makes it possible for one team to publish the current release while another team continues working on features for the next release. It also creates well-defined phases of development.
 
@@ -164,6 +165,37 @@ git merge release/[version-number]
 # with git-flow
 git flow release finish '[version-number]'
 # git flow release finish '0.1.0'
+```
+
+### 4.Hotfix Branches
+`hotfix` branches (maintenance) quickly patch production releases. They're very similar to `release` and `feature` branches except they're based on `main` instead of `develop`.
+It's the only branch that should fork directly off of `main`. As soon as the fix is complete, it should be merged into both `main` and `develop` (or the current `release` branch), and `main` should be tagged with an updated version number.
+
+Having a dedicated line of development for bug fixes lets your team address issues without interrupting the rest of the workflow or waiting for the next release cycle. Maintenance branches are *ad hoc* release branches that work directly with `main`.
+
+```bash
+# start an hotfix branch
+
+# without git-flow
+git checkout main
+git checkout -b [hotfix-branch]
+# git checkout -b avatar-animation
+
+# with git-flow
+git flow hotfix start [hotfix-branch]
+# git flow hotfix start avatar-animation
+
+# finish an hotfix branch
+
+# without git-flow
+git checkout main
+git merge [hotfix-branch]
+git checkout develop
+git merge [hotfix-branch]
+git branch -D [hotfix-branch]
+
+# with git-flow
+git flow hotfix finish [hotfix-branch]
 ```
 
 ## Reference

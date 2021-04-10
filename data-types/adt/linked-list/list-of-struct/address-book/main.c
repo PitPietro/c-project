@@ -1,20 +1,13 @@
-// global declarations
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "list.h"
 
-#include "global-declarations.h"
-#include "base-functions.h"
-
+void menu(void);
 
 int main() {
-    int choose, inserted, fine;
-
-    addressBook R;
-    
-    // logical dimension: empty table
-    inserted = 0;
-    fine = 0;
+    int choose;
+    list root = NULL;
     
     do {
         menu();
@@ -23,33 +16,42 @@ int main() {
         
         switch(choose) {
             case 1: {
-                inserted = insertAddressBook(R, inserted);
+                root = insertAddressBook(root);
                 break;
             }
             case 2: {
-                inserted = deleteAddressBook(R, inserted);
+                root = deleteAddressBook(root);
                 break;
             }
             case 3: {
-                searchAddressBook(R, inserted);
+                searchAddressBook(root);
                 break;
             }
+            /*
             case 4: {
-                printAddressBook(R, inserted);
+                printAddressBook();
                 break;
-            }
+            } */
             case 0: {
                 printf("Exiting the program... bye bye!\n");
-                fine = 1;
                 break;
             }
             default:
                 printf("Try again, you will be luckier!\n");
         }
-    } while(!fine);
+    } while(choose != 0);
     
     return 0;
 }
 
-// cd data-types/tables/address-book
-// gcc -o main main-base.c base-functions.c && ./main
+void menu(void) {
+    printf("\nChoose what you want to do:\n");
+    printf("  1) ~~ Insertion\n");
+    printf("  2) ~~ Deletion\n");
+    printf("  3) ~~ Search\n");
+    // printf("  4) ~~ Print Elements\n");
+    printf("  0) ~~ Exit\n");
+}
+
+// cd data-types/adt/linked-list/list-of-struct/address-book/
+// gcc -o main main.c list.c && ./main

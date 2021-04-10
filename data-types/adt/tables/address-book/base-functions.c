@@ -31,13 +31,13 @@ int insertAddressBook(addressBook R, int dim) {
 }
 
 int findAddressBook(addressBook R, int dim, element e) {
-    int i,trovato=0;
+    int i, found = 0;
     
-    for (i = 0; i < dim && !trovato; i++)
+    for (i = 0; i < dim && !found; i++)
     	if (!strcmp(e.firstName, R[i].firstName))
-    		trovato = 1;
+    		found = 1;
     
-    if (trovato)
+    if (found)
         return i - 1;
     else
         return N;

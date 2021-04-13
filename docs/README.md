@@ -7,6 +7,10 @@ Every page explains a meaningful topic about the **C programming language**.
 ### [ADT](adt.md)
 ### [ADT - Simple List](adt-simple-list.md)
 
+## B
+
+### [Binary Tree](binary-tree.md)
+
 ## D
 
 ### [Dynamic Variable](dynamic-variable.md)

@@ -4,6 +4,8 @@
 - [1. Introduction](#1-introduction)
 - [2. m-ary Tree](#2-m-ary-tree)
   - [2.1. Definitions](#21-definitions)
+- [3. ADT Binary Tree](#3-adt-binary-tree)
+  - [3.1. Examples](#31-examples)
 
 ## 1. Introduction
 The list is a sequential data structure. Operations over list implies sequential access and sequential elaboration time. In the worst case, the complessity is **O(N)**, which means a lot of time for big list structures.
@@ -31,3 +33,32 @@ Consequently:
 - except the root, all nodes have exactly one parent
 - a father can have zero or more children
 - among the children of a node there is an order that distinguishes the first node, the second node, etc (usually drawn from left to right).
+
+## 3. ADT Binary Tree
+The **binary tree** is the simplest case of **tree**.
+It can be empty or can have an element (at the `head`, in the so called "root node"). It has at most two child *subtrees*: `left` and `right`.
+
+```c
+typedef char element;
+typedef enum {FALSE, TRUE} boolean;
+
+typedef struct node {
+    element value;
+    struct node * left;
+    struct node * right;
+} NODE;
+
+typedef NODE * tree;
+
+tree root = NULL;
+```
+
+Trees as **recursive** structures:
+- excluding the root node, in a binary tree the nodes can be
+divided into two disjoint sets
+- each of these subsets includes a child of the root node
+plus all (and only) his descendants
+- each of these subsets identifies a sub-tree
+
+### 3.1. Examples
+See the [binary-tree/examples]() folder: `data-types/adt/tree/binary-tree/examples`

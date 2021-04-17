@@ -5,7 +5,6 @@
 - [2. m-ary Tree](#2-m-ary-tree)
   - [2.1. Definitions](#21-definitions)
 - [3. ADT Binary Tree](#3-adt-binary-tree)
-  - [3.1. Examples](#31-examples)
 
 ## 1. Introduction
 The list is a sequential data structure. Operations over list implies sequential access and sequential elaboration time. In the worst case, the complessity is **O(N)**, which means a lot of time for big list structures.
@@ -61,4 +60,68 @@ plus all (and only) his descendants
 - each of these subsets identifies a sub-tree
 
 ### 3.1. Examples
-See the [binary-tree/examples]() folder: `data-types/adt/tree/binary-tree/examples`
+See the [binary-tree/examples](../data-types/adt/tree/binary-tree/examples/) folder: `data-types/adt/tree/binary-tree/examples`
+
+## 4 Algorithms over Binary Trees
+
+### 4.1. Tree Traversal
+Traversal is a process to visit all the nodes of a tree (and print their values too). Since all nodes are connected via edges (links), you always start from the root (head) node: you can not random access a node in a tree.
+There are three ways which you can traverse a tree:
+- Inorder Traversal (for binary trees only)
+  1. the left sub-tree
+  2. the **root**
+  3. the right sub-tree
+- Preorder Traversal
+  1. the **root**
+  2. all the sub-trees from left to right
+- Postorder Traversal
+  1. all the sub-trees from left to right
+  2. the **root**
+
+```c
+void inorder_traversal(tree t) {
+  if (root != NULL) {
+
+    // 1. left sub-tree
+    inorder_traversal(t->left);
+  
+    // 2. print the root
+    printf("%d", t->value);
+
+
+    // 3. right sub-tree
+    inorder_traversal(t->right);
+  }
+}
+
+```c
+void preorder_traversal(tree t) {
+  if (root != NULL) {
+  
+    // this line can be even more generic, with a printElement()
+    // 1. print the root
+    printf("%d", t->value);
+
+
+    // 2. all the sub-trees from left to right
+    preorder_traversal(t->left);
+    preorder_traversal(t->right);
+  }
+}
+
+```
+
+```c
+void postorder_traversal(tree t) {
+  if (root != NULL) {
+
+    // 1. all the sub-trees from left to right
+    postorder_traversal(t->left);
+    postorder_traversal(t->right);
+  
+    // 2. print the root
+    printf("%d", t->value);    
+  }
+}
+
+```

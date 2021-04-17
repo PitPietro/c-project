@@ -15,11 +15,11 @@ tree insertInHead(element el, tree leftTree, tree rightTree) {
 
 void showTree(tree myTree) {
     if(myTree != NULL) {
-        printf("%c", myTree->value);
+        printElement(myTree->value);
 
         showTree(myTree->left);
         showTree(myTree->right);
     }
 }
 
-// cd data-types/adt/tree/binary-tree/examples/equation-1
+// cd data-types/adt/tree/binary-tree/examples/common

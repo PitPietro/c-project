@@ -1,5 +1,4 @@
-typedef char element;
-typedef enum {FALSE, TRUE} boolean;
+#include "element.h"
 
 typedef struct node {
     element value;
@@ -12,4 +11,4 @@ typedef NODE * tree;
 tree insertInHead(element, tree, tree);
 void showTree(tree);
 
-// cd data-types/adt/tree/binary-tree/examples/equation-1
+// cd data-types/adt/tree/binary-tree/examples/common

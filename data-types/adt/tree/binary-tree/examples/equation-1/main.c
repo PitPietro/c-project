@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "tree.h"
+#include "../common/tree.h"
 
 // a + (b * c - d) / e
 int main() {
@@ -27,4 +27,4 @@ int main() {
 }
 
 // cd data-types/adt/tree/binary-tree/examples/equation-1
-// gcc -o main main.c tree.c && ./main
+// gcc -o main main.c ../common/tree.c ../common/element.c && ./main

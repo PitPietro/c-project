@@ -9,6 +9,10 @@ typedef struct node {
 typedef NODE * tree;
 
 tree insertInHead(element, tree, tree);
-void showTree(tree);
+
+// traversal algorithms
+void inorder_traversal(tree);
+void preorder_traversal(tree);
+void postorder_traversal(tree);
 
 // cd data-types/adt/tree/binary-tree/examples/common

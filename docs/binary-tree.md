@@ -80,14 +80,13 @@ There are three ways which you can traverse a tree:
 
 ```c
 void inorder_traversal(tree t) {
-  if (root != NULL) {
+  if (t != NULL) {
 
     // 1. left sub-tree
     inorder_traversal(t->left);
   
     // 2. print the root
     printf("%d", t->value);
-
 
     // 3. right sub-tree
     inorder_traversal(t->right);
@@ -96,12 +95,11 @@ void inorder_traversal(tree t) {
 
 ```c
 void preorder_traversal(tree t) {
-  if (root != NULL) {
+  if (t != NULL) {
   
-    // this line can be even more generic, with a printElement()
+    // this line can be even more generic, with a printElement() function
     // 1. print the root
     printf("%d", t->value);
-
 
     // 2. all the sub-trees from left to right
     preorder_traversal(t->left);
@@ -113,15 +111,17 @@ void preorder_traversal(tree t) {
 
 ```c
 void postorder_traversal(tree t) {
-  if (root != NULL) {
+  if (t != NULL) {
 
     // 1. all the sub-trees from left to right
     postorder_traversal(t->left);
     postorder_traversal(t->right);
   
     // 2. print the root
-    printf("%d", t->value);    
+    printf("%d", t->value);
   }
 }
 
 ```
+
+TODO impelement with code functions in the example folder!

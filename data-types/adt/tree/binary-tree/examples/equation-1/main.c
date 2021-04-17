@@ -19,8 +19,15 @@ int main() {
     
     t1 = insertInHead('+', t1, t2);
     
-    printf("\nprint the tree \n");
-    showTree(t1);
+    printf("\nInorder traversal\n");
+    inorder_traversal(t1);
+
+    printf("\nPreorder traversal\n");
+    preorder_traversal(t1);
+
+    printf("\nPostorder traversal\n");
+    postorder_traversal(t1);
+
     printf("\n");
 
     return 0;

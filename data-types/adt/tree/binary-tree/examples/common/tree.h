@@ -18,4 +18,7 @@ void postorder_traversal(tree);
 // search
 boolean searchElement(element, tree);
 
+// count the nodes
+int countNodes(tree);
+
 // cd data-types/adt/tree/binary-tree/examples/common

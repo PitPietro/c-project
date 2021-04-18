@@ -43,6 +43,8 @@ int main() {
         printf(" has NOT been found!\n");
     }
 
+    printf("\nThe nodes of the tree are: %d\n", countNodes(t1));
+
     return 0;
 }
 

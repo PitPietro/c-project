@@ -61,7 +61,14 @@ boolean searchElement(element e, tree t) {
       return ( (searchElement(e, t->left)) || (searchElement(e, t->right)) );
     }
   }
+}
 
+int countNodes(tree t) {
+  if(t == NULL) {
+    return 0;
+  } else {
+    return 1 + countNodes(t->left) + countNodes(t->right);
+  }
 }
 
 // cd data-types/adt/tree/binary-tree/examples/common

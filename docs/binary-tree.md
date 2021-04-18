@@ -217,14 +217,45 @@ boolean searchElement(element e, tree t) {
 
 The usage is:
 ```c
+tree t1 = NULL;
+
+t1 = insertInHead(/* ... */);
+// ...
+
 printf("\nInsert an element to search: ");
 element myElement = getElement();
 
-// if searchElement(myElement, t1) == 1) { ... }
-// if searchElement(myElement, t1) == true) { ... }
 if (searchElement(myElement, t1)) {
   printf("found!\n");
 } else {
   printf("NOT found!\n");
 }
+```
+
+### 3.3. Count node numbers
+The algorithm, for a binary tree, works in this way: if the tree is empty, the nodes are `0`.
+Else, the nodes are `1` (the **root**) `+` the left sub-tree's nodes `+` the right sub-tree's nodes.
+
+```c
+/* tree.c */
+
+// ...
+
+int countNodes(tree t) {
+  if(t == NULL) {
+    return 0;
+  } else {
+    return 1 + countNodes(t->left) + countNodes(t->right);
+  }
+}
+```
+
+The usage is:
+```c
+tree t1 = NULL;
+
+t1 = insertInHead(/* ... */);
+// ...
+
+printf("\nThe nodes of the tree are: %d\n", countNodes(t1));
 ```

@@ -43,8 +43,9 @@ int main() {
         printf(" has NOT been found!\n");
     }
 
-    printf("\nThe nodes of the tree are: %d\n", countNodes(t1));
+    printf("\nThe element occurs %d times\n", countElementOccurrences(myElement, t1));
 
+    printf("\nThe nodes of the tree are: %d\n", countNodes(t1));
     return 0;
 }
 

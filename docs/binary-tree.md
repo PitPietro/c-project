@@ -25,6 +25,8 @@ A [tree](https://en.wikipedia.org/wiki/Tree_(graph_theory)) is a [DAG](https://e
 - **tree height**: the length of the longest path from the root to a leaf
 - if an **arc** connects node `A` to node `B`, node `A` is called the **parent node** of `B`, which is called a **child node** (or direct descendant) of `A`
 
+More definitions [here](https://data-flair.training/blogs/binary-tree-in-c/).
+
 Since, in a tree, the degree of entry of each node is known beforehand, instead of **degree of exit** you can simply call it **degree**.
 
 Consequently:
@@ -258,4 +260,39 @@ t1 = insertInHead(/* ... */);
 // ...
 
 printf("\nThe nodes of the tree are: %d\n", countNodes(t1));
+```
+
+### 3.4. Count element occurrences
+Count how many times the given element is stored in the tree.
+Let's take the previous function and add a an `if` statement.
+
+```c
+/* tree.c */
+
+// ...
+
+int countElementOccurrences(element e, tree t) {
+  if(t == NULL) {
+    return 0;
+  } else {
+    if (e == t->value) {
+      return 1 + countElementOccurrences(e, t->left) + countElementOccurrences(e, t->right);
+    } else {
+      return countElementOccurrences(e, t->left) + countElementOccurrences(e, t->right);
+    }
+  }
+}
+```
+
+The usage is:
+```c
+tree t1 = NULL;
+
+t1 = insertInHead(/* ... */);
+// ...
+
+printf("\nInsert an element to search: ");
+element myElement = getElement();
+
+printf("\nThe element occurs %d times\n", countElementOccurrences(myElement, t1));
 ```

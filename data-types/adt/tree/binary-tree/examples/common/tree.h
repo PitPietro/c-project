@@ -21,4 +21,7 @@ boolean searchElement(element, tree);
 // count the nodes
 int countNodes(tree);
 
+// count how many times the given element is stored in the tree;
+int countElementOccurrences(element, tree);
+
 // cd data-types/adt/tree/binary-tree/examples/common

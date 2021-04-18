@@ -71,4 +71,16 @@ int countNodes(tree t) {
   }
 }
 
+int countElementOccurrences(element e, tree t) {
+  if(t == NULL) {
+    return 0;
+  } else {
+    if (e == t->value) {
+      return 1 + countElementOccurrences(e, t->left) + countElementOccurrences(e, t->right);
+    } else {
+      return countElementOccurrences(e, t->left) + countElementOccurrences(e, t->right);
+    }
+  }
+}
+
 // cd data-types/adt/tree/binary-tree/examples/common

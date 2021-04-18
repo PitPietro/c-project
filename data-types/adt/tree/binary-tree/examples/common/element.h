@@ -2,7 +2,7 @@
 #define ELEMENT_H
 
 typedef char element;
-typedef enum {F, T} boolean;
+typedef enum {false, true} boolean;
 
 boolean isLess(element, element);
 boolean isEqual(element, element);

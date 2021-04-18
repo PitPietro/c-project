@@ -20,7 +20,7 @@ element getElement(void) {
 }
 
 void printElement(element el) {
-    printf("%c\t", el);
+    printf("%c", el);
 }
 
 // cd data-types/adt/tree/binary-tree/examples/common

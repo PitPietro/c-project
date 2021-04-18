@@ -30,6 +30,19 @@ int main() {
 
     printf("\n");
 
+    printf("\nInsert an element to search: ");
+    element myElement = getElement();
+
+    // if searchElement(myElement, t1) == 1) { ... }
+    // if searchElement(myElement, t1) == true) { ... }
+    if (searchElement(myElement, t1)) {
+        printElement(myElement);
+        printf(" has been found!\n");
+    } else {
+        printElement(myElement);
+        printf(" has NOT been found!\n");
+    }
+
     return 0;
 }
 

@@ -51,4 +51,17 @@ void postorder_traversal(tree t) {
   }
 }
 
+boolean searchElement(element e, tree t) {
+  if (t == NULL) {
+    return false;
+  } else {
+    if (e == t->value) {
+      return true;
+    } else {
+      return ( (searchElement(e, t->left)) || (searchElement(e, t->right)) );
+    }
+  }
+
+}
+
 // cd data-types/adt/tree/binary-tree/examples/common

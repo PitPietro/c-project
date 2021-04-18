@@ -33,13 +33,59 @@ Consequently:
 - a father can have zero or more children
 - among the children of a node there is an order that distinguishes the first node, the second node, etc (usually drawn from left to right).
 
-## 3. ADT Binary Tree
+### 2.2. ADT Binary Tree
 The **binary tree** is the simplest case of **tree**.
 It can be empty or can have an element (at the `head`, in the so called "root node"). It has at most two child *subtrees*: `left` and `right`.
 
+#### 2.2.1. element.h
 ```c
+/* element.h */
+
+#ifndef ELEMENT_H
+#define ELEMENT_H
+
 typedef char element;
-typedef enum {FALSE, TRUE} boolean;
+typedef enum {false, true} boolean;
+
+boolean isLess(element, element);
+boolean isEqual(element, element);
+element getElement(void);
+void printElement(element);
+
+#endif
+```
+
+#### 2.2.2. element.c
+```c
+/* element.c */
+
+#include "element.h"
+#include <stdio.h>
+
+boolean isEqual(element e1, element e2) {
+    return (e1 == e2);
+}
+
+boolean isLess(element e1, element e2) {
+    return (e1 < e2);
+}
+
+element getElement(void) {
+    element el;
+    scanf("%c", &el);
+    return el;
+}
+
+void printElement(element el) {
+    printf("%c\t", el);
+}
+```
+
+#### 2.2.3. tree.h
+```c
+/* tree.h */
+
+#include "element.h"
 
 typedef struct node {
     element value;
@@ -49,7 +95,27 @@ typedef struct node {
 
 typedef NODE * tree;
 
-tree root = NULL;
+tree insertInHead(element, tree, tree);
+```
+
+#### 2.2.4. tree.c
+```c
+/* tree.c */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "tree.h"
+
+tree insertInHead(element el, tree leftTree, tree rightTree) {
+    tree myTree;
+
+    myTree = (NODE *) malloc(sizeof(NODE));
+    myTree->value = el;
+    myTree->left = leftTree;
+    myTree->right = rightTree;
+
+    return (myTree);
+}
 ```
 
 Trees as **recursive** structures:
@@ -59,12 +125,12 @@ divided into two disjoint sets
 plus all (and only) his descendants
 - each of these subsets identifies a sub-tree
 
-### 3.1. Examples
+### 2.3. Examples
 See the [binary-tree/examples](../data-types/adt/tree/binary-tree/examples/) folder: `data-types/adt/tree/binary-tree/examples`
 
-## 4 Algorithms over Binary Trees
+## 3 Algorithms over Binary Trees
 
-### 4.1. Tree Traversal
+### 3.1. Tree Traversal
 Traversal is a process to visit all the nodes of a tree (and print their values too). Since all nodes are connected via edges (links), you always start from the root (head) node: you can not random access a node in a tree.
 There are three ways which you can traverse a tree:
 - Inorder Traversal (for binary trees only)
@@ -124,4 +190,41 @@ void postorder_traversal(tree t) {
 
 ```
 
-TODO impelement with code functions in the example folder!
+**Please Note**: Those algorithms' impelementation must be placed in `tree.c`, while the prototypes must be placed in `tree.h`.
+
+### 3.2. Search an element
+All the algorithms which operates over a tree are just *theme variation* of the **traversal algorithms**: they're the easiest way to visit all the nodes of a tree.
+It only changes the operation to perform over the **root**.
+
+```c
+/* tree.c */
+
+// ...
+
+boolean searchElement(element e, tree t) {
+  if (t == NULL) {
+    return false;
+  } else {
+    if (e == t->value) {
+      return true;
+    } else {
+      return ( (searchElement(e, t->left)) || (searchElement(e, t->right)) );
+    }
+  }
+
+}
+```
+
+The usage is:
+```c
+printf("\nInsert an element to search: ");
+element myElement = getElement();
+
+// if searchElement(myElement, t1) == 1) { ... }
+// if searchElement(myElement, t1) == true) { ... }
+if (searchElement(myElement, t1)) {
+  printf("found!\n");
+} else {
+  printf("NOT found!\n");
+}
+```

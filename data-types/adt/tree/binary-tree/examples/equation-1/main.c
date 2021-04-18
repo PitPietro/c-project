@@ -46,6 +46,8 @@ int main() {
     printf("\nThe element occurs %d times\n", countElementOccurrences(myElement, t1));
 
     printf("\nThe nodes of the tree are: %d\n", countNodes(t1));
+
+    printf("\nThe tree height is: %d\n", height(t1));
     return 0;
 }
 

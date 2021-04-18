@@ -296,3 +296,47 @@ element myElement = getElement();
 
 printf("\nThe element occurs %d times\n", countElementOccurrences(myElement, t1));
 ```
+
+### 3.5. Height of the binary tree
+If the tree is empty, the height is `0`. Else, the height is the maximum between the left subtree heigth and the right subtree heigth.
+
+```c
+tree t1 = NULL;
+
+t1 = insertInHead(/* ... */);
+// ...
+
+int max(int a, int b) {
+  if(a > b) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
+int heightAux(tree t) {
+  if(t == NULL) {
+    return 0;
+  } else {
+    return ( 1 + max(heightAux(t->left), heightAux(t->right)) );
+  }
+}
+
+int height(tree t) {
+  if(t == NULL) {
+    return 0;
+  } else {
+    return ( max(heightAux(t->left), heightAux(t->right)) );
+  }
+}
+```
+
+The usage is:
+```c
+tree t1 = NULL;
+
+t1 = insertInHead(/* ... */);
+// ...
+
+printf("\nThe tree height is: %d\n", height(t1));
+```

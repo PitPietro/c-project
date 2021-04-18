@@ -83,4 +83,28 @@ int countElementOccurrences(element e, tree t) {
   }
 }
 
+int max(int a, int b) {
+  if(a > b) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
+int heightAux(tree t) {
+  if(t == NULL) {
+    return 0;
+  } else {
+    return ( 1 + max(heightAux(t->left), heightAux(t->right)) );
+  }
+}
+
+int height(tree t) {
+  if(t == NULL) {
+    return 0;
+  } else {
+    return ( max(heightAux(t->left), heightAux(t->right)) );
+  }
+}
+
 // cd data-types/adt/tree/binary-tree/examples/common

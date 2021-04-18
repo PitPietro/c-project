@@ -24,4 +24,9 @@ int countNodes(tree);
 // count how many times the given element is stored in the tree;
 int countElementOccurrences(element, tree);
 
+// height
+int max(int, int);
+int heightAux(tree);
+int height(tree);
+
 // cd data-types/adt/tree/binary-tree/examples/common

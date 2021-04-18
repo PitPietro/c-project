@@ -2,15 +2,27 @@
 
 ## Table of content
 - [1. Introduction](#1-introduction)
-- [2. m-ary Tree](#2-m-ary-tree)
+- [2. M-ary Tree](#2-m-ary-tree)
   - [2.1. Definitions](#21-definitions)
-- [3. ADT Binary Tree](#3-adt-binary-tree)
+  - [2.2. ADT Binary Tree](#22-adt-binary-tree)
+    - [2.2.1. element.h](#221-elementh)
+    - [2.2.2. element.c](#222-elementc)
+    - [2.2.3. tree.h](#223-treeh)
+    - [2.2.4. tree.c](#223-treec)
+  - [2.3. Examples](#23-examples)
+- [3 Algorithms over Binary Trees](#3-algorithms-over-binary-trees)
+  - [3.1. Tree Traversal](#31-tree-traversal)
+  - [3.2. Search an element](#32-search-an-element)
+  - [3.3. Count node numbers](#33-count-node-numbers)
+  - [3.4. Count element occurrences](#34-count-element-occurrences)
+  - [3.5. Height of the binary tree](#35-height-of-the-binary-tree)
+
 
 ## 1. Introduction
 The list is a sequential data structure. Operations over list implies sequential access and sequential elaboration time. In the worst case, the complessity is **O(N)**, which means a lot of time for big list structures.
 To overcome the timing issues, you need to implement a linked data structure, which is useful to manage large amount of data.
 
-## 2. M-ary Tree
+## 2.M-ary Tree 
 Trees are the most used not sequential data structure.
 Data is stored into **nodes**. Hierarchical relationships are defined by
 **arcs**, which connect the nodes.

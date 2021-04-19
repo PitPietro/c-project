@@ -4,8 +4,12 @@
 typedef char element;
 typedef enum {false, true} boolean;
 
-boolean isLess(element, element);
 boolean isEqual(element, element);
+boolean isLess(element, element);
+boolean isLessOrEqual(element, element);
+boolean isMajor(element, element);
+boolean isMajorOrEqual(element, element);
+
 element getElement(void);
 void printElement(element);
 

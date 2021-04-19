@@ -29,4 +29,7 @@ int max(int, int);
 int heightAux(tree);
 int height(tree);
 
+// insertion
+tree iterativeInsertion(element, tree);
+
 // cd data-types/adt/tree/binary-search-tree/examples/common

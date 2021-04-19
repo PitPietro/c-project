@@ -9,6 +9,18 @@ boolean isLess(element e1, element e2) {
     return (e1 < e2);
 }
 
+boolean isLessOrEqual(element e1, element e2) {
+    return (e1 <= e2);
+}
+
+boolean isMajor(element e1, element e2) {
+    return (e1 > e2);
+}
+
+boolean isMajorOrEqual(element e1, element e2) {
+    return (e1 >= e2);
+}
+
 element getElement(void) {
     element el;
     scanf("%c", &el);

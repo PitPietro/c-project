@@ -107,4 +107,32 @@ int height(tree t) {
   }
 }
 
+// insertion
+tree iterativeInsertion(element e, tree root) {
+  // p stands for predecessor
+  tree p = NULL, t = root;
+
+  if (root == NULL) {
+    return insertInHead(e, NULL, NULL);
+  } else {
+    while (t != NULL) {
+      if ( isLessOrEqual(e, t->value) ) {
+        p = t;
+        t = t->left;
+      } else {
+        p = t;
+        t = t->right;
+      }
+    }
+  }
+
+  if ( isLessOrEqual(e, t->value) ) {
+    p->left = insertInHead(e, NULL, NULL);
+  } else {
+    p->right = insertInHead(e, NULL, NULL);
+  }
+
+  return root;
+}
+
 // cd data-types/adt/tree/binary-search-tree/examples/common

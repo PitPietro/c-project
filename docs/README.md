@@ -11,6 +11,8 @@ Every page explains a meaningful topic about the **C programming language**.
 
 ### [Binary Tree](binary-tree.md)
 
+### [Binary Search Tree](binary-search-tree.md)
+
 ## D
 
 ### [Dynamic Variable](dynamic-variable.md)

@@ -1,7 +1,7 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-typedef char element;
+typedef int element;
 typedef enum {false, true} boolean;
 
 boolean isEqual(element, element);

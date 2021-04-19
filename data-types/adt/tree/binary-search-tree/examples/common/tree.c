@@ -1,6 +1,6 @@
+#include "tree.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "tree.h"
 
 tree insertInHead(element el, tree leftTree, tree rightTree) {
     tree myTree;
@@ -21,6 +21,7 @@ void inorder_traversal(tree t) {
   
     // 2. print the root
     printElement(t->value);
+    printf("\t");
 
     // 3. right sub-tree
     inorder_traversal(t->right);
@@ -126,7 +127,7 @@ tree iterativeInsertion(element e, tree root) {
     }
   }
 
-  if ( isLessOrEqual(e, t->value) ) {
+  if ( isLessOrEqual(e, p->value) ) {
     p->left = insertInHead(e, NULL, NULL);
   } else {
     p->right = insertInHead(e, NULL, NULL);
@@ -134,5 +135,23 @@ tree iterativeInsertion(element e, tree root) {
 
   return root;
 }
+
+tree ordins_it(element e,tree root)
+{tree p=NULL, t=root;
+// p predecessore o nodo padre
+if (root==NULL) return insertInHead(e,NULL,NULL);
+else
+{ while (t!=NULL)
+if (e<=t->value)
+{p=t; t=t->left;}
+else
+{p=t; t=t->right;}
+}
+//p punta a un nodo foglia
+if (e<=p->value)
+p->left = insertInHead(e,NULL,NULL);
+else
+p->right = insertInHead(e,NULL,NULL);
+return root; }
 
 // cd data-types/adt/tree/binary-search-tree/examples/common

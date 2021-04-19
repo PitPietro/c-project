@@ -32,4 +32,6 @@ int height(tree);
 // insertion
 tree iterativeInsertion(element, tree);
 
+tree ordins_it(element,tree);
+
 // cd data-types/adt/tree/binary-search-tree/examples/common

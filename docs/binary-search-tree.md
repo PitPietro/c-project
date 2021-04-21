@@ -43,3 +43,8 @@ If `t` is `NULL`, the function returns a new **node** storing the element `e`. I
 If `t` is not `NULL` and if `e` is minor or equal than the element stored in the root of `t` (`t->value`), then insert a new node in the left sub-tree of `t`. This node have `value` equal to `e` and both the left and right nodes equal to `NULL`.  
 
 Else, if `t` is not `NULL` and if `e` is major than the element stored in the root of `t` (`t->value`), then insert a new node in the right sub-tree of `t`. This node have `value` equal to `e` and both the left and right nodes equal to `NULL`.
+
+#### Recursive Insertion - v2
+Rebuilds the tree afterwards, after having carried out the ordered insertion. This version take a lot of time.
+
+### Search

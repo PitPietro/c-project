@@ -150,4 +150,15 @@ tree recursive_insertion_v1(element e, tree t) {
   }
 }
 
+tree recursive_insertion_v2(element e, tree t) {
+  if (t == NULL) {
+    return insert_in_head(e, NULL, NULL);
+  } else {
+    if ( isLessOrEqual(e, t->value) ) {
+      return t->left = insert_in_head(t->value, recursive_insertion_v2(e, t->left), t->right);
+    } else {
+      return t->right = insert_in_head(t->value, t->left, recursive_insertion_v2(e, t->right));
+    }
+  }
+}
 // cd data-types/adt/tree/binary-search-tree/examples/common

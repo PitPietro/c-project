@@ -35,3 +35,11 @@ For the insertion, there are the following ways:
 
 #### Iterative Insertion
 Moves a pointer to the left (or to the right) until it reaches a leaf, then it connects the new node under that leaf: the insertion function iteratively updates a pointer, looking for the correct insertion position. Once it finds the node, it appends the new node as a left (or right) child, in order to keep the *sorting properties* unchanged.
+
+#### Recursive Insertion - v1
+Given `t`, the pointer which identify the sub-tree where the element `e` must be inserted.
+If `t` is `NULL`, the function returns a new **node** storing the element `e`. In this case, the function stops here.
+
+If `t` is not `NULL` and if `e` is minor or equal than the element stored in the root of `t` (`t->value`), then insert a new node in the left sub-tree of `t`. This node have `value` equal to `e` and both the left and right nodes equal to `NULL`.  
+
+Else, if `t` is not `NULL` and if `e` is major than the element stored in the root of `t` (`t->value`), then insert a new node in the right sub-tree of `t`. This node have `value` equal to `e` and both the left and right nodes equal to `NULL`.

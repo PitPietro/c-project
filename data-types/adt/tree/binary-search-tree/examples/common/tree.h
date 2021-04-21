@@ -8,7 +8,7 @@ typedef struct node {
 
 typedef NODE * tree;
 
-tree insertInHead(element, tree, tree);
+tree insert_in_head(element, tree, tree);
 
 // traversal algorithms
 void inorder_traversal(tree);
@@ -30,8 +30,7 @@ int heightAux(tree);
 int height(tree);
 
 // insertion
-tree iterativeInsertion(element, tree);
-
-tree ordins_it(element,tree);
+tree iterative_insertion(element, tree);
+tree recursive_insertion_v1(element, tree);
 
 // cd data-types/adt/tree/binary-search-tree/examples/common

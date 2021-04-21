@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-tree insertInHead(element el, tree leftTree, tree rightTree) {
+tree insert_in_head(element el, tree leftTree, tree rightTree) {
     tree myTree;
 
     myTree = (NODE *) malloc(sizeof(NODE));
@@ -109,12 +109,12 @@ int height(tree t) {
 }
 
 // insertion
-tree iterativeInsertion(element e, tree root) {
+tree iterative_insertion(element e, tree root) {
   // p stands for predecessor
   tree p = NULL, t = root;
 
   if (root == NULL) {
-    return insertInHead(e, NULL, NULL);
+    return insert_in_head(e, NULL, NULL);
   } else {
     while (t != NULL) {
       if ( isLessOrEqual(e, t->value) ) {
@@ -128,30 +128,26 @@ tree iterativeInsertion(element e, tree root) {
   }
 
   if ( isLessOrEqual(e, p->value) ) {
-    p->left = insertInHead(e, NULL, NULL);
+    p->left = insert_in_head(e, NULL, NULL);
   } else {
-    p->right = insertInHead(e, NULL, NULL);
+    p->right = insert_in_head(e, NULL, NULL);
   }
 
   return root;
 }
 
-tree ordins_it(element e,tree root)
-{tree p=NULL, t=root;
-// p predecessore o nodo padre
-if (root==NULL) return insertInHead(e,NULL,NULL);
-else
-{ while (t!=NULL)
-if (e<=t->value)
-{p=t; t=t->left;}
-else
-{p=t; t=t->right;}
+tree recursive_insertion_v1(element e, tree t) {
+  if (t == NULL) {
+    return insert_in_head(e, NULL, NULL);
+  } else {
+    if ( isLessOrEqual(e, t->value) ) {
+      t->left = recursive_insertion_v1(e, t->left);
+    } else {
+      t->right = recursive_insertion_v1(e, t->right);
+    }
+
+    return t;
+  }
 }
-//p punta a un nodo foglia
-if (e<=p->value)
-p->left = insertInHead(e,NULL,NULL);
-else
-p->right = insertInHead(e,NULL,NULL);
-return root; }
 
 // cd data-types/adt/tree/binary-search-tree/examples/common

@@ -37,5 +37,6 @@ tree recursive_insertion_v2(element, tree);
 // search
 boolean iterative_search_v1(element, tree);
 boolean iterative_search_v2(element, tree);
+boolean recursive_search_v1(element, tree);
 
 // cd data-types/adt/tree/binary-search-tree/examples/common

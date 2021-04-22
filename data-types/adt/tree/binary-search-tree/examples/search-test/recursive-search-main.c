@@ -23,24 +23,14 @@ int main() {
 
     element randomElement = (element) randomInt;
 
-    boolean find = iterative_search_v1(randomElement, t1);
+    boolean find = recursive_search_v1(randomElement, t1);
 
     if (find) {
         print_element(randomElement);
-        printf(" has been found!\tv1\n");
+        printf(" has been found!\n");
     } else {
         print_element(randomElement);
-        printf(" has not been found!\tv1\n");
-    }
-
-    find = iterative_search_v2(randomElement, t1);
-
-    if (find) {
-        print_element(randomElement);
-        printf(" has been found!\tv2\n");
-    } else {
-        print_element(randomElement);
-        printf(" has not been found!\tv2\n");
+        printf(" has not been found!\n");
     }
 
     return 0;
@@ -60,4 +50,4 @@ tree default_insertion(tree root) {
 }
 
 // cd data-types/adt/tree/binary-search-tree/examples/search-test
-// gcc -o main iterative-search-main.c ../common/tree.c ../common/element.c && ./main
+// gcc -o main recursive-search-main.c ../common/tree.c ../common/element.c && ./main

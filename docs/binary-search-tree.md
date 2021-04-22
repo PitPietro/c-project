@@ -55,8 +55,15 @@ For the insertion, there are the following ways:
 2. ricorsive
 
 #### Iterative Search
-Given `t`, the pointer which identify a binary tree, assigned to the **root** of the tree.
+Given `t`, the pointer which identify a binary tree, assigned to the **root** of the tree and `e` the element to search.
 While `t` is not `NULL` and its value is different from the element `e` that is searched:
+- if `t->value` is equal to `e`, return `true`
+- if `t->value` is minor than `e`, continue the search in the left sub-tree
+- if `t->value` is major than `e`, continue the search in the right sub-tree
+
+#### Recursive Search
+Given `t`, the pointer which identify a binary tree, assigned to the **root** of the tree and `e` the element to search.
+If `t` is empty, return `false`, else:
 - if `t->value` is equal to `e`, return `true`
 - if `t->value` is minor than `e`, continue the search in the left sub-tree
 - if `t->value` is major than `e`, continue the search in the right sub-tree

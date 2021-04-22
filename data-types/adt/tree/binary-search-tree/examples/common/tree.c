@@ -191,4 +191,21 @@ boolean iterative_search_v2(element e, tree t) {
 
   return found;
 }
+
+boolean recursive_search_v1(element e, tree t) {
+  if (t == NULL) {
+    return false;
+  } else {
+    if (is_equal(e, t->value)) {
+      return true;
+    } else {
+      if (is_less(e, t->value)) {
+        return recursive_search_v1(e, t->left);
+      } else {
+        return recursive_search_v1(e, t->right);
+      }
+    }
+  }
+}
+
 // cd data-types/adt/tree/binary-search-tree/examples/common

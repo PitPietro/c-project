@@ -5,11 +5,11 @@ boolean isEqual(element e1, element e2) {
     return (e1 == e2);
 }
 
-boolean isLess(element e1, element e2) {
+boolean is_less(element e1, element e2) {
     return (e1 < e2);
 }
 
-boolean isLessOrEqual(element e1, element e2) {
+boolean is_less_or_equal(element e1, element e2) {
     if(e1 <= e2) {
         return true;
     } else {

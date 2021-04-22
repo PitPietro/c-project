@@ -16,17 +16,17 @@ void preorder_traversal(tree);
 void postorder_traversal(tree);
 
 // search
-boolean searchElement(element, tree);
+boolean search_element(element, tree);
 
 // count the nodes
-int countNodes(tree);
+int count_nodes(tree);
 
 // count how many times the given element is stored in the tree;
-int countElementOccurrences(element, tree);
+int count_element_occurrences(element, tree);
 
 // height
 int max(int, int);
-int heightAux(tree);
+int height_aux(tree);
 int height(tree);
 
 // insertion

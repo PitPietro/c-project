@@ -20,7 +20,7 @@ void inorder_traversal(tree t) {
     inorder_traversal(t->left);
   
     // 2. print the root
-    printElement(t->value);
+    print_element(t->value);
     printf("\t");
 
     // 3. right sub-tree
@@ -32,7 +32,7 @@ void preorder_traversal(tree t) {
   if (t != NULL) {
   
     // 1. print the root
-    printElement(t->value);
+    print_element(t->value);
 
     // 2. all the sub-trees from left to right
     preorder_traversal(t->left);
@@ -48,18 +48,18 @@ void postorder_traversal(tree t) {
     postorder_traversal(t->right);
   
     // 2. print the root
-    printElement(t->value);
+    print_element(t->value);
   }
 }
 
-boolean searchElement(element e, tree t) {
+boolean search_element(element e, tree t) {
   if (t == NULL) {
     return false;
   } else {
     if (e == t->value) {
       return true;
     } else {
-      return ( (searchElement(e, t->left)) || (searchElement(e, t->right)) );
+      return ( (search_element(e, t->left)) || (search_element(e, t->right)) );
     }
   }
 }
@@ -117,7 +117,7 @@ tree iterative_insertion(element e, tree root) {
     return insert_in_head(e, NULL, NULL);
   } else {
     while (t != NULL) {
-      if ( isLessOrEqual(e, t->value) ) {
+      if ( is_less_or_equal(e, t->value) ) {
         p = t;
         t = t->left;
       } else {
@@ -127,7 +127,7 @@ tree iterative_insertion(element e, tree root) {
     }
   }
 
-  if ( isLessOrEqual(e, p->value) ) {
+  if ( is_less_or_equal(e, p->value) ) {
     p->left = insert_in_head(e, NULL, NULL);
   } else {
     p->right = insert_in_head(e, NULL, NULL);
@@ -140,7 +140,7 @@ tree recursive_insertion_v1(element e, tree t) {
   if (t == NULL) {
     return insert_in_head(e, NULL, NULL);
   } else {
-    if ( isLessOrEqual(e, t->value) ) {
+    if ( is_less_or_equal(e, t->value) ) {
       t->left = recursive_insertion_v1(e, t->left);
     } else {
       t->right = recursive_insertion_v1(e, t->right);
@@ -154,7 +154,7 @@ tree recursive_insertion_v2(element e, tree t) {
   if (t == NULL) {
     return insert_in_head(e, NULL, NULL);
   } else {
-    if ( isLessOrEqual(e, t->value) ) {
+    if ( is_less_or_equal(e, t->value) ) {
       return t->left = insert_in_head(t->value, recursive_insertion_v2(e, t->left), t->right);
     } else {
       return t->right = insert_in_head(t->value, t->left, recursive_insertion_v2(e, t->right));

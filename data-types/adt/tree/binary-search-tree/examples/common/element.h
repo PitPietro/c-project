@@ -5,13 +5,13 @@ typedef int element;
 typedef enum {false, true} boolean;
 
 boolean isEqual(element, element);
-boolean isLess(element, element);
-boolean isLessOrEqual(element, element);
-boolean isMajor(element, element);
-boolean isMajorOrEqual(element, element);
+boolean is_less(element, element);
+boolean is_less_or_equal(element, element);
+boolean is_major(element, element);
+boolean is_major_or_equal(element, element);
 
-element getElement(void);
-void printElement(element);
+element get_element(void);
+void print_element(element);
 
 #endif
 

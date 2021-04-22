@@ -4,7 +4,7 @@
 typedef int element;
 typedef enum {false, true} boolean;
 
-boolean isEqual(element, element);
+boolean is_equal(element, element);
 boolean is_less(element, element);
 boolean is_less_or_equal(element, element);
 boolean is_major(element, element);

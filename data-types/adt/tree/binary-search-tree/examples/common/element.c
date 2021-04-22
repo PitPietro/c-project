@@ -1,7 +1,7 @@
 #include "element.h"
 #include <stdio.h>
 
-boolean isEqual(element e1, element e2) {
+boolean is_equal(element e1, element e2) {
     return (e1 == e2);
 }
 
@@ -17,21 +17,21 @@ boolean is_less_or_equal(element e1, element e2) {
     }
 }
 
-boolean isMajor(element e1, element e2) {
+boolean is_major(element e1, element e2) {
     return (e1 > e2);
 }
 
-boolean isMajorOrEqual(element e1, element e2) {
+boolean is_major_or_equal(element e1, element e2) {
     return (e1 >= e2);
 }
 
-element getElement(void) {
+element get_element(void) {
     element el;
     scanf("%d", &el);
     return el;
 }
 
-void printElement(element el) {
+void print_element(element el) {
     printf("%d", el);
 }
 

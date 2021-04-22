@@ -3,19 +3,18 @@
 #include <stdlib.h>
 
 tree insert_in_head(element el, tree leftTree, tree rightTree) {
-    tree myTree;
+  tree myTree;
 
-    myTree = (NODE *) malloc(sizeof(NODE));
-    myTree->value = el;
-    myTree->left = leftTree;
-    myTree->right = rightTree;
+  myTree = (NODE *) malloc(sizeof(NODE));
+  myTree->value = el;
+  myTree->left = leftTree;
+  myTree->right = rightTree;
 
-    return (myTree);
+  return (myTree);
 }
 
 void inorder_traversal(tree t) {
   if (t != NULL) {
-
     // 1. left sub-tree
     inorder_traversal(t->left);
   
@@ -30,7 +29,6 @@ void inorder_traversal(tree t) {
 
 void preorder_traversal(tree t) {
   if (t != NULL) {
-  
     // 1. print the root
     print_element(t->value);
 
@@ -42,7 +40,6 @@ void preorder_traversal(tree t) {
 
 void postorder_traversal(tree t) {
   if (t != NULL) {
-
     // 1. all the sub-trees from left to right
     postorder_traversal(t->left);
     postorder_traversal(t->right);
@@ -64,22 +61,22 @@ boolean search_element(element e, tree t) {
   }
 }
 
-int countNodes(tree t) {
+int count_nodes(tree t) {
   if(t == NULL) {
     return 0;
   } else {
-    return 1 + countNodes(t->left) + countNodes(t->right);
+    return 1 + count_nodes(t->left) + count_nodes(t->right);
   }
 }
 
-int countElementOccurrences(element e, tree t) {
+int count_element_occurrences(element e, tree t) {
   if(t == NULL) {
     return 0;
   } else {
     if (e == t->value) {
-      return 1 + countElementOccurrences(e, t->left) + countElementOccurrences(e, t->right);
+      return 1 + count_element_occurrences(e, t->left) + count_element_occurrences(e, t->right);
     } else {
-      return countElementOccurrences(e, t->left) + countElementOccurrences(e, t->right);
+      return count_element_occurrences(e, t->left) + count_element_occurrences(e, t->right);
     }
   }
 }
@@ -92,11 +89,11 @@ int max(int a, int b) {
   }
 }
 
-int heightAux(tree t) {
+int height_aux(tree t) {
   if(t == NULL) {
     return 0;
   } else {
-    return ( 1 + max(heightAux(t->left), heightAux(t->right)) );
+    return ( 1 + max(height_aux(t->left), height_aux(t->right)) );
   }
 }
 
@@ -104,7 +101,7 @@ int height(tree t) {
   if(t == NULL) {
     return 0;
   } else {
-    return ( max(heightAux(t->left), heightAux(t->right)) );
+    return ( max(height_aux(t->left), height_aux(t->right)) );
   }
 }
 
@@ -160,5 +157,38 @@ tree recursive_insertion_v2(element e, tree t) {
       return t->right = insert_in_head(t->value, t->left, recursive_insertion_v2(e, t->right));
     }
   }
+}
+
+boolean iterative_search_v1(element e, tree t) {
+  while (t != NULL) {
+    if (is_equal(e, t->value)) {
+      return true;
+    } else {
+      if (is_less(e, t->value)) {
+        t = t->left;
+      } else {
+        t = t->right;
+      }
+    }
+  }
+
+  return false;
+}
+
+boolean iterative_search_v2(element e, tree t) {
+  boolean found = false;
+  while ((t != NULL) && (!found)) {
+    if (is_equal(e, t->value)) {
+      found = true;
+    } else {
+      if (is_less(e, t->value)) {
+        t = t->left;
+      } else {
+        t = t->right;
+      }
+    }
+  }
+
+  return found;
 }
 // cd data-types/adt/tree/binary-search-tree/examples/common

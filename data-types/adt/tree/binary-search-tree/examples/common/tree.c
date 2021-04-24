@@ -106,6 +106,7 @@ int height(tree t) {
 }
 
 // insertion
+
 tree iterative_insertion(element e, tree root) {
   // p stands for predecessor
   tree p = NULL, t = root;
@@ -158,6 +159,8 @@ tree recursive_insertion_v2(element e, tree t) {
     }
   }
 }
+
+// search
 
 boolean iterative_search_v1(element e, tree t) {
   while (t != NULL) {

@@ -1,23 +1,5 @@
 # Binary Search Trees
 
-## Table of Content
-- [1. Introduction](#1-introduction)
-  - [1.1. Non-balanced binary tree](#11-non-balanced-binary-tree)
-  - [1.2. Balanced binary tree](#12-balanced-binary-tree)
-    - [1.2.1. Complete binary tree](#121-complete-binary-tree)
-- [2. Algorithms over BST](#2-algorithms-over-bst)
-  - [2.1. Insertion](#21-insertion)
-    - [2.1.1. Iterative Insertion](#211-iterative-insertion)
-    - [2.1.2. Recursive Insertion - v1](#212-recursive-insertion---v1)
-    - [2.1.3. Recursive Insertion - v3](#213-recursive-insertion---v2)
-  - [2.2. Search](#22-search)
-    - [2.2.1. Iterative Search](#221-iterative-search)
-    - [2.2.2. Recursive Search](#222-recursives-earch)
-    - [2.2.3. Complexity of the search](#223-complexity-of-the-search)
-  - [2.3. Binary Search](#23-binary-search)
-- [3. Self-balancing Trees](#3-self-balancing-trees)
-  - [3.1. AVL Tree](#31-avl-tree)
-
 ## 1. Introduction
 The **BST** is a binary tree where the elemenets are positioned based on the relation they have with the **root** node's value.
 

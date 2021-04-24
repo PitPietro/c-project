@@ -18,6 +18,14 @@ BST are usefull to:
 ### Non-balanced binary tree
 If the tree is not balanced, it will look like a list: all the elemenets are stored in the right subtree and the left subtree is left empty or, viceversa, the elemenets are stored in the left subtree and the right subtree is left empty.
 
+### Balanced binary tree
+A tree whose elements are evenly distributed among the subtrees, is a **balanced tree**. Off course, there are algorithms for balancing non-balanced trees.
+In the balanced BST, for each node, the height of the left and right subtrees differ al most for a unit.
+
+#### Complete binary tree
+In a balanced and complete binary tree, each node except the leaves, has exit degree equal to 2.
+Given `h` the height of the tree, the number of nodes is `N = 2`<sup>`h+1`</sup>`- 1`
+
 ## Algorithms over BST
 Operations that modify the tree must leave the sorting properties unchanged.
 
@@ -67,3 +75,12 @@ If `t` is empty, return `false`, else:
 - if `t->value` is equal to `e`, return `true`
 - if `t->value` is minor than `e`, continue the search in the left sub-tree
 - if `t->value` is major than `e`, continue the search in the right sub-tree
+
+#### Complexity of the search
+A binary search tree reduces the complexity of the search algorithm: it excludes half a tree for each comparison.
+
+The outcome of the comparison tells which side the searched element is on:
+- in the left subtree, if the element is less than root
+- in the right subtree, if the element is greater than the root
+
+The number of comparisons is, in the worst case, proportional to the height of the tree. It's important to keep the tree balanced: all paths from root to leaves should have more or less the same height.

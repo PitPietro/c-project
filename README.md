@@ -1,4 +1,12 @@
-# c-project
+# c-project - 1.4.24
+
+Why such a release number?
+
+`1.4.24`
+
+- `1` is the age of the project
+- `4` is the month of the year we're currently in
+- `24` is the day of the month
 
 ## git flow
 

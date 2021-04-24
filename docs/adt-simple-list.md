@@ -7,9 +7,10 @@
 - [2. ADT element](#2-adt-element)
   - [2.1. element.h](#21-elementh)
   - [2.2. element.c](#22-elementc)
-  - [2.3. list.c](#23-listc)
-  - [2.4. Delete an element](#24-delete-an-element)
-  - [2.5. Merge ordered lists](#25-merge-ordered-lists)
+  - [2.3. list.h](#23-listh)
+  - [2.4. list.c](#24-listc)
+  - [2.5. Delete an element](#25-delete-an-element)
+  - [2.6. Merge ordered lists](#26-merge-ordered-lists)
 
 ## 1. Introduction
 
@@ -178,7 +179,29 @@ void printElement(element el) {
 
 Now that you know how `element` behave, you need to modify `list.h` and `list.c` generalizing the operations.
 
-### 2.3. list.c
+### 2.3. list.h
+```c
+/* list.h */
+
+#include "element.h"
+
+#include "element.h"
+
+typedef struct list_element {
+    element value;
+    struct list_element *next;
+} item;
+
+typedef item *list;
+
+// primitives
+list cons(list, element);
+
+// non-primitives
+void showList(list);
+```
+
+### 2.4. list.c
 
 ```c
 /* list.c */
@@ -215,7 +238,7 @@ void showList(list l) {
 }
 ```
 
-### 2.4. Delete an element
+### 2.5. Delete an element
 Given an element (key, or integer or whatever you want), delete the first occurrence of the element from list:
 1. find the node to delete: if it's at the head of the list, just update the root pointer
 2. if it's not the one at the head of the list, modify the next field of the predecessor node
@@ -256,7 +279,7 @@ list delete(element el, list L) {
 }
 ```
 
-### 2.5. Merge ordered lists
+### 2.6. Merge ordered lists
 ```c
 /* list.c */
 

@@ -84,3 +84,6 @@ The outcome of the comparison tells which side the searched element is on:
 - in the right subtree, if the element is greater than the root
 
 The number of comparisons is, in the worst case, proportional to the height of the tree. It's important to keep the tree balanced: all paths from root to leaves should have more or less the same height.
+
+### Binary Search
+In case of a balanced BST, the search makes `H + 1` comparisons in the works case (where `H` is the height of the tree). At each step, excludes half a tree. This algorithm turns out to be a binary search because, to explore a space of **N** elements, it needs at most `H + 1` comparisons, which is equal to **O (log <sub>2</sub> N)** comparisons for balanced trees.

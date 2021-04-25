@@ -25,7 +25,7 @@ int count_nodes(tree);
 int count_element_occurrences(element, tree);
 
 // height
-int max(int, int);
+int max_subtree(int, int);
 int height_aux(tree);
 int height(tree);
 

@@ -81,7 +81,7 @@ int count_element_occurrences(element e, tree t) {
   }
 }
 
-int max(int a, int b) {
+int max_subtree(int a, int b) {
   if(a > b) {
     return a;
   } else {

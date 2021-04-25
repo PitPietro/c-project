@@ -35,6 +35,9 @@ int count_nodes(tree);
 // count how many times the given element is stored in the tree;
 int count_element_occurrences(element, tree);
 
+// sum the value of the nodes
+element sum_nodes_value(tree);
+
 // height
 int max_subtree(int, int);
 int height_aux(tree);

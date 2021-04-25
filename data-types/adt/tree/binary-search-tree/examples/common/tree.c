@@ -120,6 +120,17 @@ int count_element_occurrences(element e, tree t) {
   }
 }
 
+element sum_nodes_value(tree t) {
+  element sum;
+  
+  if (is_empty(t)) {
+    return 0;
+  } else {
+    sum = sum_elements(sum_nodes_value(left_subtree(t)), sum_nodes_value(right_subtree(t)));
+    return sum_elements(get_root_value(t), sum);
+  }
+}
+
 int max_subtree(int a, int b) {
   if(a > b) {
     return a;

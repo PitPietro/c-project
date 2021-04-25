@@ -2,15 +2,54 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-tree insert_in_head(element el, tree leftTree, tree rightTree) {
-  tree myTree;
+void free_tree(tree t) {
+  if (t != NULL) {
+    free_tree(t->left);
+    free_tree(t->right);
+    free(t);
+  } else {
+    return; // if (t == NULL)
+  }
+}
 
-  myTree = (NODE *) malloc(sizeof(NODE));
-  myTree->value = el;
-  myTree->left = leftTree;
-  myTree->right = rightTree;
+// getter
 
-  return (myTree);
+boolean is_empty(tree t) {
+  // return (t == NULL)
+  if (t == NULL) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+element root(tree t) {
+  if(is_empty(t)) {
+    return;
+  } else {
+    return (t->right);
+  }
+}
+
+tree left_subtree(tree t) {
+  if (is_empty(t)) {
+    return (NULL);
+  } else {
+    return (t->left);
+  }
+}
+
+tree right_subtree(tree t) {
+  if (is_empty(t)) {
+    return (NULL);
+  } else {
+    return (t->right);
+  }
+}
+
+// setter
+tree empty_tree() {
+  return NULL;
 }
 
 void inorder_traversal(tree t) {
@@ -31,6 +70,7 @@ void preorder_traversal(tree t) {
   if (t != NULL) {
     // 1. print the root
     print_element(t->value);
+    printf("\t");
 
     // 2. all the sub-trees from left to right
     preorder_traversal(t->left);
@@ -46,6 +86,7 @@ void postorder_traversal(tree t) {
   
     // 2. print the root
     print_element(t->value);
+    printf("\t");
   }
 }
 
@@ -93,7 +134,7 @@ int height_aux(tree t) {
   if(t == NULL) {
     return 0;
   } else {
-    return ( 1 + max(height_aux(t->left), height_aux(t->right)) );
+    return ( 1 + max_subtree(height_aux(t->left), height_aux(t->right)) );
   }
 }
 
@@ -101,11 +142,22 @@ int height(tree t) {
   if(t == NULL) {
     return 0;
   } else {
-    return ( max(height_aux(t->left), height_aux(t->right)) );
+    return ( max_subtree(height_aux(t->left), height_aux(t->right)) );
   }
 }
 
 // insertion
+
+tree insert_in_head(element el, tree leftTree, tree rightTree) {
+  tree myTree;
+
+  myTree = (NODE *) malloc(sizeof(NODE));
+  myTree->value = el;
+  myTree->left = leftTree;
+  myTree->right = rightTree;
+
+  return (myTree);
+}
 
 tree iterative_insertion(element e, tree root) {
   // p stands for predecessor

@@ -8,7 +8,18 @@ typedef struct node {
 
 typedef NODE * tree;
 
-tree insert_in_head(element, tree, tree);
+// de-allocate the memorty of the tree
+void free_tree(tree);
+
+// getter
+boolean is_empty(tree);
+
+element root(tree);
+tree left_subtree(tree);
+tree right_subtree(tree);
+
+// setter
+tree empty_tree();
 
 // traversal algorithms
 void inorder_traversal(tree);
@@ -30,6 +41,7 @@ int height_aux(tree);
 int height(tree);
 
 // insertion
+tree insert_in_head(element, tree, tree);
 tree iterative_insertion(element, tree);
 tree recursive_insertion_v1(element, tree);
 tree recursive_insertion_v2(element, tree);

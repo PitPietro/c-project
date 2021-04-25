@@ -14,7 +14,7 @@ void free_tree(tree);
 // getter
 boolean is_empty(tree);
 
-element root(tree);
+element get_root_value(tree);
 tree left_subtree(tree);
 tree right_subtree(tree);
 

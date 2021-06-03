@@ -124,7 +124,7 @@ element sum_nodes_value(tree t) {
   element sum;
   
   if (is_empty(t)) {
-    return 0;
+    return 0; // return null_element();
   } else {
     sum = sum_elements(sum_nodes_value(left_subtree(t)), sum_nodes_value(right_subtree(t)));
     return sum_elements(get_root_value(t), sum);

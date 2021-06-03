@@ -44,6 +44,10 @@ boolean is_null(element e) {
     }
 }
 
+// element null_element() {
+//     return 0;
+// }
+
 boolean is_identity_element(element e) {
     if (e == 1) {
         return true;

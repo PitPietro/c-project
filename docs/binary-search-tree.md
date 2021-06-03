@@ -47,7 +47,7 @@ Operations that modify the tree must leave the sorting properties unchanged.
 
 Between the values stored in the nodes's tree, there must be defined a **total order relationship**.
 
-You need to use the `isEqual()` and `isLess()` functions previously defined in [`element.c`](../data-types/adt/tree/binary-search-tree/examples/common/element.c) file.
+You need to use the `is_equal()` and `is_less()` functions previously defined in [`element.c`](../data-types/adt/tree/binary-search-tree/examples/common/element.c) file.
 
 ### 2.1. Insertion
 For the insertion, there are the following ways:

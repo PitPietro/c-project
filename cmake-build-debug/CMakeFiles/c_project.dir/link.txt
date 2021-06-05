@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/c_project.dir/data-types/adt/linked-list/list-of-struct/actions-over-files/address-book/element.c.o CMakeFiles/c_project.dir/data-types/adt/linked-list/list-of-struct/actions-over-files/address-book/list.c.o CMakeFiles/c_project.dir/data-types/adt/linked-list/list-of-struct/actions-over-files/address-book/main.c.o -o c_project 

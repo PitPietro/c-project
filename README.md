@@ -11,6 +11,7 @@ Why such a release number?
 
 ## Todo
 - linked list with files
+- [cmake](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 
 ## git flow
 

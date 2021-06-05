@@ -34,5 +34,5 @@ int main() {
     long_integer();
 }
 
-// cd data-types/array-dimensions
+// cd data-types/int/array-dimensions
 // gcc -o numerical-array numerical-array.c && ./numerical-array

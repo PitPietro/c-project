@@ -64,7 +64,7 @@ element insert_first_and_last_name(void) {
  * @param e element
  */
 void print_element(element e) {
-    printf("%s %s %s", e.first_name, e.last_name, e.phone_number);
+    printf("%s %s %s\n", e.first_name, e.last_name, e.phone_number);
 }
 
 /**

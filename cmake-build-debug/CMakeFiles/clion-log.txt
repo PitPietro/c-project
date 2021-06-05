@@ -1,0 +1,1 @@
+CMakeLists.txt not found in /home/pit/Documents/c-project Select CMakeLists.txt

@@ -55,6 +55,9 @@ list insert_address_book(list l) {
 }
 
 /**
+ * TODO fix this function
+ * https://prepinsta.com/c-program/deletion-in-linked-list/
+ *
  * Delete an element from the list
  * @param l list to update
  * @param e element to delete

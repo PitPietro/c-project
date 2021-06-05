@@ -3,8 +3,6 @@
 #include <string.h>
 #include "list.h"
 
-/* insertion */
-
 /**
  * Insert the element on the top of the list
  * @param l list where to perform the insertion
@@ -24,26 +22,45 @@ list insert_in_head(list l, element e) {
     return aux;
 }
 
+/**
+ * Recursively insert an element to the list
+ * @param l list where to insert the element
+ * @param e element to insert
+ * @return updated list
+ */
 list recursive_element_insertion(list l, element e) {
     if (l == NULL) {
-        return insert_in_head(l, e);
-    } else if (strcmp(e.first_name, l->value.first_name) <= 0) {
-        return insert_in_head(l, e);
+        l = insert_in_head(l, e);
     } else {
-        l->next = recursive_element_insertion(l->next, e);
-        return l;
+        if (strcmp(e.first_name, l->value.first_name) <= 0) {
+            l = insert_in_head(l, e);
+        } else {
+            l->next = recursive_element_insertion(l->next, e);
+        }
     }
+
+    return l;
 }
 
+/**
+ * Input mask for 'recursive_element_insertion()' function.
+ * This functions reads an element from the user input and
+ * then call the recursive insertion.
+ * @param l list to update
+ * @return updated list
+ */
 list insert_address_book(list l) {
     element e = insert_element();
-
     return recursive_element_insertion(l, e);
 }
 
-/* deletion */
-
-list delete(list l, element e) {
+/**
+ * Delete an element from the list
+ * @param l list to update
+ * @param e element to delete
+ * @return updated list
+ */
+list delete_element(list l, element e) {
     int found = 0;
     list aux = l, prev = NULL;
 
@@ -72,14 +89,26 @@ list delete(list l, element e) {
     return l;
 }
 
+/**
+ * Input mask for 'delete_element()' function.
+ * This functions reads an element (first and
+ * last name only) from the user input and call
+ * the deletion function.
+ * @param l list to update
+ * @return updated list
+ */
 list delete_address_book(list l) {
-    element e = insert_element_to_delete();
-    return delete(l, e);
+    element e = insert_first_and_last_name();
+    return delete_element(l, e);
 }
 
-/* searching */
-
-list find(element e, list l) {
+/**
+ * Find an element inside the list
+ * @param e
+ * @param l
+ * @return
+ */
+list find_element(element e, list l) {
     list L = l;
 
     int found = 0;
@@ -98,17 +127,19 @@ list find(element e, list l) {
         return NULL;
 }
 
+/**
+ * Input mask for 'find_element()' function.
+ * This functions reads an element (first and
+ * last name only) from the user input and call
+ * the search function.
+ * @param l list where to search the element
+ */
 void search_address_book(list l) {
     list k = NULL;
 
-    element e;
-    printf("\nInsert the first name: ");
-    scanf("%s", e.first_name);
+    element e = insert_first_and_last_name();
 
-    printf("\nInsert the last name: ");
-    scanf("%s", e.last_name);
-
-    k = find(e, l);
+    k = find_element(e, l);
 
     if (k != NULL) {
         printf("\nThe phone number of %s %s is %s", k->value.first_name, k->value.last_name, k->value.phone_number);

@@ -2,25 +2,29 @@
 
 #define DIM 20
 
-typedef struct
-{
+typedef struct {
     char first_name[20];
     char last_name[20];
     char phone_number[30];
 } element;
 
 // C language does not provide boolean data type by default
-typedef enum {false, true} boolean;
+typedef enum {
+    false, true
+} boolean;
 
 // methods about the element itself (not the whole linked list)
 
-// comparison algorithm
 boolean is_equal(element, element);
+
 boolean is_null(element);
 
-// getter/setter
+// getters and setters
 element insert_element(void);
-element insert_element_to_delete(void);
+
+element insert_first_and_last_name(void);
+
 void print_element(element);
+
 element copy_element(element);
 

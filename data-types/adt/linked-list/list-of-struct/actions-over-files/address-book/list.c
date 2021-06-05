@@ -5,95 +5,87 @@
 
 /* insertion */
 
-list insertInTheHead(list myL, element myE) {
-    list tmp;
+/**
+ * Insert the element on the top of the list
+ * @param l list where to perform the insertion
+ * @param e element to add to the list
+ * @return the updated list
+ */
+list insert_in_head(list l, element e) {
+    list aux;
 
-    // allocate tmp in HEAP memory 
-    tmp = (list) malloc(sizeof(item));
-    tmp->value = myE;
-    tmp->next = myL;
+    // allocate auxiliary list in HEAP memory
+    aux = (list) malloc(sizeof(item));
 
-    return tmp;
+    // copy the value
+    aux->value = copy_element(e);
+    aux->next = l;
+
+    return aux;
 }
 
-list orderedInsertRecursive(list myL, element myE) {
-    if(myL == NULL) {
-        return insertInTheHead(myL, myE);
-    } else if(strcmp(myE.firstName, myL->value.firstName) <= 0) {
-        return insertInTheHead(myL, myE);
+list recursive_element_insertion(list l, element e) {
+    if (l == NULL) {
+        return insert_in_head(l, e);
+    } else if (strcmp(e.first_name, l->value.first_name) <= 0) {
+        return insert_in_head(l, e);
     } else {
-        myL->next = orderedInsertRecursive(myL->next, myE);
-        return myL;
+        l->next = recursive_element_insertion(l->next, e);
+        return l;
     }
 }
 
-list insertAddressBook(list myL) {
-    element myE;
+list insert_address_book(list l) {
+    element e = insert_element();
 
-    printf("\nInsert the first name: ");
-    scanf("%s", myE.lastName);
-
-    printf("\nInsert the last name: ");
-    scanf("%s", myE.lastName);
-
-    printf("\nInsert the phone number: ");
-    scanf("%s", myE.lastName);
-
-    return orderedInsertRecursive(myL, myE);
+    return recursive_element_insertion(l, e);
 }
 
 /* deletion */
 
-list delete(list myL, element myE) {
+list delete(list l, element e) {
     int found = 0;
-    list aux=myL, prev = NULL;
-    
+    list aux = l, prev = NULL;
+
     if (aux != NULL) {
-        if (strcmp(aux->value.firstName, myE.firstName) == 0) {
-            printf("\n%s %s has been deleted\n", aux->value.firstName, aux->value.lastName);
-            myL = aux->next;
+        if (strcmp(aux->value.first_name, e.first_name) == 0) {
+            printf("\n%s %s has been deleted\n", aux->value.first_name, aux->value.last_name);
+            l = aux->next;
             free(aux);
         }
     } else {
         while ((aux != NULL) && (!found)) {
-            if (strcmp(aux->value.firstName, myE.firstName) == 0)
+            if (strcmp(aux->value.first_name, e.first_name) == 0)
                 found = 1;
             else {
                 prev = aux;
                 aux = aux->next;
             }
-        }    
+        }
         if (aux != NULL) {
-            printf("\n%s %s has been deleted\n", aux->value.firstName, aux->value.lastName);
+            printf("\n%s %s has been deleted\n", aux->value.first_name, aux->value.last_name);
             prev->next = aux->next;
             free(aux);
         }
     }
-    
-    return myL;
+
+    return l;
 }
 
-list deleteAddressBook(list myL) {
-    element myE;
-
-    printf("\nInsert the first name: ");
-    scanf("%s", myE.lastName);
-
-    printf("\nInsert the last name: ");
-    scanf("%s", myE.lastName);
-
-    return delete(myL, myE);
+list delete_address_book(list l) {
+    element e = insert_element_to_delete();
+    return delete(l, e);
 }
 
 /* searching */
 
-list find(element myE, list myL) {
-    list L = myL;
-    
+list find(element e, list l) {
+    list L = l;
+
     int found = 0;
-    
-    while ( (L != NULL) && (!found) ) {
-        if( (!strcmp(myE.firstName, L->value.firstName)) && (!strcmp(myE.lastName, L->value.lastName)) ) {
+
+    while ((L != NULL) && (!found)) {
+        if ((!strcmp(e.first_name, L->value.first_name)) && (!strcmp(e.last_name, L->value.last_name))) {
             found = 1;
         } else {
             L = L->next;
@@ -106,21 +98,32 @@ list find(element myE, list myL) {
         return NULL;
 }
 
-void searchAddressBook(list myL) {
+void search_address_book(list l) {
     list k = NULL;
 
-    element myE;
+    element e;
     printf("\nInsert the first name: ");
-    scanf("%s", myE.firstName);
+    scanf("%s", e.first_name);
 
     printf("\nInsert the last name: ");
-    scanf("%s", myE.lastName);
+    scanf("%s", e.last_name);
 
-    k = find(myE, myL);
+    k = find(e, l);
 
     if (k != NULL) {
-        printf("\nThe phone number of %s %s is %s", k->value.firstName, k->value.lastName, k->value.phoneNumber);
+        printf("\nThe phone number of %s %s is %s", k->value.first_name, k->value.last_name, k->value.phone_number);
     } else {
-        printf("\n%s %s not found\n", myE.firstName, myE.lastName);
+        printf("\n%s %s not found\n", e.first_name, e.last_name);
+    }
+}
+
+/**
+ * Print the list in an iterative way.
+ * @param l list to print
+ */
+void print_address_book(list l) {
+    while (l != NULL) {
+        print_element(l->value);
+        l = l->next;
     }
 }

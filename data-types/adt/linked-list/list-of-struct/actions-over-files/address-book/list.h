@@ -8,7 +8,7 @@ typedef struct list_element {
 
 typedef item *list;
 
-list insertAddressBook(list);
-list deleteAddressBook(list);
-void searchAddressBook(list);
-// void printAddressBook(list);
+list insert_address_book(list);
+list delete_address_book(list);
+void search_address_book(list);
+void print_address_book(list);

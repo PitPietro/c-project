@@ -4,13 +4,43 @@
 #include <string.h>
 
 /**
- * Check if the elements passed are equal
+ * Compare 'first_name' of the elements passed as parameters
+ * @param e1 element 1
+ * @param e2 element 2
+ * @return 'true' if their 'first_name' is equal, otherwise 'false'
+ */
+boolean is_first_name_equal(element e1, element e2) {
+    return strcmp(e1.first_name, e2.first_name);
+}
+
+/**
+ * Compare 'last_name' of the elements passed as parameters
+ * @param e1 element 1
+ * @param e2 element 2
+ * @return 'true' if their 'last_name' is equal, otherwise 'false'
+ */
+boolean is_last_name_equal(element e1, element e2) {
+    return strcmp(e1.last_name, e2.last_name);
+}
+
+/**
+ * Compare 'phone_number' of the elements passed as parameters
+ * @param e1 element 1
+ * @param e2 element 2
+ * @return 'true' if their 'phone_number' is equal, otherwise 'false'
+ */
+boolean is_phone_number_equal(element e1, element e2) {
+    return strcmp(e1.phone_number, e2.phone_number);
+}
+
+/**
+ * Check if the elements passed as parameters are equal
  * @param e1 element 1
  * @param e2 element 2
  * @return 'true' if the elements are equal, otherwise 'false'
  */
 boolean is_equal(element e1, element e2) {
-    return (strcmp(e1.first_name, e2.first_name) && strcmp(e1.last_name, e2.last_name) && strcmp(e1.phone_number, e2.phone_number));
+    return (is_first_name_equal(e1, e2) && is_last_name_equal(e1, e2) && is_phone_number_equal(e1, e2));
 }
 
 /**

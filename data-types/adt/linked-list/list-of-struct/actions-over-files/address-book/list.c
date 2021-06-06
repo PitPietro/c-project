@@ -32,7 +32,7 @@ list recursive_element_insertion(list l, element e) {
     if (l == NULL) {
         l = insert_in_head(l, e);
     } else {
-        if (strcmp(e.first_name, l->value.first_name) <= 0) {
+        if (is_equal(e, l->value) <= 0) { // if (strcmp(e.first_name, l->value.first_name) <= 0) {
             l = insert_in_head(l, e);
         } else {
             l->next = recursive_element_insertion(l->next, e);
@@ -55,40 +55,40 @@ list insert_address_book(list l) {
 }
 
 /**
- * TODO fix this function
- * https://prepinsta.com/c-program/deletion-in-linked-list/
- *
  * Delete an element from the list
  * @param l list to update
  * @param e element to delete
  * @return updated list
  */
 list delete_element(list l, element e) {
-    int found = 0;
+    boolean found = false;
     list aux = l, prev = NULL;
 
     if (aux != NULL) {
-        if (strcmp(aux->value.first_name, e.first_name) == 0) {
-            printf("\n%s %s has been deleted\n", aux->value.first_name, aux->value.last_name);
+        printf("del| if aux != NULL\n");
+        if ((is_first_name_equal(e, aux->value)) && (is_last_name_equal(e, aux->value))) {
+            printf("del| aux value = e\n");
             l = aux->next;
             free(aux);
-        }
-    } else {
-        while ((aux != NULL) && (!found)) {
-            if (strcmp(aux->value.first_name, e.first_name) == 0)
-                found = 1;
-            else {
-                prev = aux;
-                aux = aux->next;
+        } else {
+            while ((aux != NULL) && (!found)) {
+                printf("del| while aux != NULL AND NOT found\n");
+                if (is_first_name_equal(e, aux->value) && is_last_name_equal(e, aux->value)) {
+                    printf("del| aux value = e --> found = true\n");
+                    found = true;
+                } else {
+                    printf("del| aux value != e\n");
+                    prev = aux;
+                    aux = aux->next;
+                }
+            }
+            if (aux != NULL) {
+                printf("del| if aux != NULL (after while)\n");
+                prev->next = aux->next;
+                free(aux);
             }
         }
-        if (aux != NULL) {
-            printf("\n%s %s has been deleted\n", aux->value.first_name, aux->value.last_name);
-            prev->next = aux->next;
-            free(aux);
-        }
     }
-
     return l;
 }
 
@@ -107,27 +107,27 @@ list delete_address_book(list l) {
 
 /**
  * Find an element inside the list
- * @param e
- * @param l
+ * @param e element to find
+ * @param l list where to find the element
  * @return
  */
 list find_element(element e, list l) {
-    list L = l;
+    list aux = l;
+    boolean found = false;
 
-    int found = 0;
-
-    while ((L != NULL) && (!found)) {
-        if ((!strcmp(e.first_name, L->value.first_name)) && (!strcmp(e.last_name, L->value.last_name))) {
-            found = 1;
+    while ((aux != NULL) && (!found)) {
+        if ((!is_first_name_equal(e, aux->value)) && (!is_last_name_equal(e, aux->value))) {
+            found = true;
         } else {
-            L = L->next;
+            aux = aux->next;
         }
     }
 
-    if (found)
-        return L;
-    else
+    if (found) {
+        return aux;
+    } else {
         return NULL;
+    }
 }
 
 /**

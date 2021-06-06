@@ -15,6 +15,9 @@ typedef enum {
 
 // methods about the element itself (not the whole linked list)
 
+boolean is_first_name_equal(element, element);
+boolean is_last_name_equal(element, element);
+boolean is_phone_number_equal(element, element);
 boolean is_equal(element, element);
 
 boolean is_null(element);

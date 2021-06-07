@@ -7,7 +7,10 @@ void menu(void);
 
 list open_from_file(list);
 
+void write_elements_on_file(list);
+
 int main() {
+
     printf("\nADT ~ List");
 
     char c;
@@ -44,8 +47,16 @@ int main() {
                 print_address_book(root);
                 break;
             }
+            case 5: {
+                write_elements_on_file(root);
+                break;
+            }
             case 0: {
                 printf("Exiting the program... bye bye!\n");
+
+                list test = open_from_file(test);
+                print_address_book(test);
+
                 break;
             }
             default:
@@ -62,6 +73,7 @@ void menu(void) {
     printf("  2) ~~ Deletion\n");
     printf("  3) ~~ Search\n");
     printf("  4) ~~ Print Elements\n");
+    printf("  5) ~~ Save Elements to .bin file\n");
     printf("  0) ~~ Exit\n");
 }
 
@@ -73,7 +85,7 @@ void menu(void) {
 list open_from_file(list l) {
     // declare local variables
     FILE *fp;
-    char *fileName;
+    char fileName[20];
     element e;
 
     // let the user insert the filename (could add a check about .bin extension)
@@ -81,21 +93,21 @@ list open_from_file(list l) {
     scanf("%s", fileName);
 
     // try to open the file
-    if((fp = fopen(fileName, "rb")) == NULL) {
+    if ((fp = fopen(fileName, "rb")) == NULL) {
         printf("Error while opening %s\n", fileName);
         exit(1);
     }
 
     // perform reading operations
-    while(fread(&e, sizeof(element), 1, fp) == 1) {
+    while (fread(&e, sizeof(element), 1, fp) == 1) {
         // if the element is not a duplicate, insert it into the list
-        if(find_element(l, e) == 0) {
+        if (find_element(e, l) == 0) {
             l = recursive_element_insertion(l, e);
         }
     }
 
     // try to close the file
-    if(fclose(fp) != 0) {
+    if (fclose(fp) != 0) {
         printf("Error: wrong file closure!\n");
         exit(2);
     }
@@ -104,5 +116,32 @@ list open_from_file(list l) {
     return l;
 }
 
+void write_elements_on_file(list l) {
+    // declare local variables
+    FILE *fp;
+    element e;
+    int i;
+
+    // try to open the file
+    if ((fp = fopen("records.bin", "wb")) == NULL) {
+        printf("Error while opening the file\n");
+        exit(1);
+    }
+
+    // perform writing operations
+    while(l != NULL) {
+        printf("write| e ");
+        print_element(l->value);
+        fwrite(&l->value, sizeof(element), 1, fp);
+
+        l = l->next;
+    }
+
+    // try to close the file
+    if (fclose(fp) != 0) {
+        printf("Error: wrong file closure!\n");
+        exit(2);
+    }
+}
 // cd data-types/adt/linked-list/list-of-struct/actions-over-files/address-book/
 // gcc -o main main.c list.c element.c && ./main

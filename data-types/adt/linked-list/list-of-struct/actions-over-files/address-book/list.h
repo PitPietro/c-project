@@ -23,3 +23,5 @@ list find_element(element, list);
 void search_address_book(list);
 
 void print_address_book(list);
+
+int list_length(list);

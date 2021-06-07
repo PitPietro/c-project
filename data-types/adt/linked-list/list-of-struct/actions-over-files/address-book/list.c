@@ -161,3 +161,16 @@ void print_address_book(list l) {
         l = l->next;
     }
 }
+
+/**
+ * Recursive function to evaluate the list length
+ * @param l list
+ * @return length of the list passed as parameter
+ */
+int list_length(list l) {
+    if (l != NULL) {
+        return 1 + list_length(l->next);
+    } else {
+        return 0;
+    }
+}
